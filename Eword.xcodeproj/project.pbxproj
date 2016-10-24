@@ -8,13 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		847283B31DBD8FF4005A5E6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847283B21DBD8FF4005A5E6A /* AppDelegate.swift */; };
-		847283B51DBD8FF4005A5E6A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847283B41DBD8FF4005A5E6A /* ViewController.swift */; };
 		847283B81DBD8FF4005A5E6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847283B61DBD8FF4005A5E6A /* Main.storyboard */; };
 		847283BB1DBD8FF4005A5E6A /* eword.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 847283B91DBD8FF4005A5E6A /* eword.xcdatamodeld */; };
 		847283BD1DBD8FF4005A5E6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847283BC1DBD8FF4005A5E6A /* Assets.xcassets */; };
 		847283C01DBD8FF4005A5E6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847283BE1DBD8FF4005A5E6A /* LaunchScreen.storyboard */; };
 		847283CB1DBD8FF4005A5E6A /* ewordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847283CA1DBD8FF4005A5E6A /* ewordTests.swift */; };
 		847283D61DBD8FF4005A5E6A /* ewordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847283D51DBD8FF4005A5E6A /* ewordUITests.swift */; };
+		847283E71DBDA089005A5E6A /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847283E61DBDA089005A5E6A /* RecordViewController.swift */; };
+		847283EA1DBDA159005A5E6A /* Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847283E91DBDA159005A5E6A /* Record.swift */; };
+		847283EC1DBDA50E005A5E6A /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847283EB1DBDA50E005A5E6A /* MainTabBarController.swift */; };
+		847283EE1DBDAC1C005A5E6A /* SavedFilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847283ED1DBDAC1C005A5E6A /* SavedFilesViewController.swift */; };
+		847283F01DBDAC37005A5E6A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847283EF1DBDAC37005A5E6A /* SettingsViewController.swift */; };
+		847283F21DBDAC5B005A5E6A /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847283F11DBDAC5B005A5E6A /* AboutUsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +42,6 @@
 /* Begin PBXFileReference section */
 		847283AF1DBD8FF4005A5E6A /* eword.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eword.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		847283B21DBD8FF4005A5E6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		847283B41DBD8FF4005A5E6A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		847283B71DBD8FF4005A5E6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		847283BA1DBD8FF4005A5E6A /* eword.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = eword.xcdatamodel; sourceTree = "<group>"; };
 		847283BC1DBD8FF4005A5E6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +53,12 @@
 		847283D11DBD8FF4005A5E6A /* ewordUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ewordUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		847283D51DBD8FF4005A5E6A /* ewordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ewordUITests.swift; sourceTree = "<group>"; };
 		847283D71DBD8FF4005A5E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		847283E61DBDA089005A5E6A /* RecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		847283E91DBDA159005A5E6A /* Record.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Record.swift; sourceTree = "<group>"; };
+		847283EB1DBDA50E005A5E6A /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		847283ED1DBDAC1C005A5E6A /* SavedFilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedFilesViewController.swift; sourceTree = "<group>"; };
+		847283EF1DBDAC37005A5E6A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		847283F11DBDAC5B005A5E6A /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				847283B21DBD8FF4005A5E6A /* AppDelegate.swift */,
-				847283B41DBD8FF4005A5E6A /* ViewController.swift */,
+				847283E81DBDA14A005A5E6A /* Models */,
+				847283E51DBDA089005A5E6A /* ViewControllers */,
 				847283B61DBD8FF4005A5E6A /* Main.storyboard */,
 				847283BC1DBD8FF4005A5E6A /* Assets.xcassets */,
 				847283BE1DBD8FF4005A5E6A /* LaunchScreen.storyboard */,
@@ -126,6 +137,26 @@
 				847283D71DBD8FF4005A5E6A /* Info.plist */,
 			);
 			path = ewordUITests;
+			sourceTree = "<group>";
+		};
+		847283E51DBDA089005A5E6A /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				847283EB1DBDA50E005A5E6A /* MainTabBarController.swift */,
+				847283E61DBDA089005A5E6A /* RecordViewController.swift */,
+				847283ED1DBDAC1C005A5E6A /* SavedFilesViewController.swift */,
+				847283EF1DBDAC37005A5E6A /* SettingsViewController.swift */,
+				847283F11DBDAC5B005A5E6A /* AboutUsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		847283E81DBDA14A005A5E6A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				847283E91DBDA159005A5E6A /* Record.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,8 +293,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				847283B51DBD8FF4005A5E6A /* ViewController.swift in Sources */,
+				847283F21DBDAC5B005A5E6A /* AboutUsViewController.swift in Sources */,
+				847283E71DBDA089005A5E6A /* RecordViewController.swift in Sources */,
 				847283BB1DBD8FF4005A5E6A /* eword.xcdatamodeld in Sources */,
+				847283F01DBDAC37005A5E6A /* SettingsViewController.swift in Sources */,
+				847283EE1DBDAC1C005A5E6A /* SavedFilesViewController.swift in Sources */,
+				847283EC1DBDA50E005A5E6A /* MainTabBarController.swift in Sources */,
+				847283EA1DBDA159005A5E6A /* Record.swift in Sources */,
 				847283B31DBD8FF4005A5E6A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,7 +455,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: David Walp (88FTPXGFFT)";
 				INFOPLIST_FILE = eword/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.keith.eword;
+				PRODUCT_BUNDLE_IDENTIFIER = com.keith.eword1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -432,7 +468,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer: David Walp (88FTPXGFFT)";
 				INFOPLIST_FILE = eword/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.keith.eword;
+				PRODUCT_BUNDLE_IDENTIFIER = com.keith.eword1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -511,6 +547,7 @@
 				847283DC1DBD8FF4005A5E6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		847283DD1DBD8FF4005A5E6A /* Build configuration list for PBXNativeTarget "ewordTests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +556,7 @@
 				847283DF1DBD8FF4005A5E6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		847283E01DBD8FF4005A5E6A /* Build configuration list for PBXNativeTarget "ewordUITests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +565,7 @@
 				847283E21DBD8FF4005A5E6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
