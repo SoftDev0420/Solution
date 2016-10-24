@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Eword.xcodeproj">
+      location = "self:eword.xcodeproj">
    </FileRef>
 </Workspace>

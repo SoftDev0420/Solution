@@ -7,66 +7,66 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		84DFD18C1DB953820071F14C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DFD18B1DB953820071F14C /* AppDelegate.swift */; };
-		84DFD18E1DB953820071F14C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DFD18D1DB953820071F14C /* ViewController.swift */; };
-		84DFD1911DB953820071F14C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DFD18F1DB953820071F14C /* Main.storyboard */; };
-		84DFD1941DB953820071F14C /* Eword.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84DFD1921DB953820071F14C /* Eword.xcdatamodeld */; };
-		84DFD1961DB953830071F14C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84DFD1951DB953830071F14C /* Assets.xcassets */; };
-		84DFD1991DB953830071F14C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84DFD1971DB953830071F14C /* LaunchScreen.storyboard */; };
-		84DFD1A41DB953830071F14C /* EwordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DFD1A31DB953830071F14C /* EwordTests.swift */; };
-		84DFD1AF1DB953830071F14C /* EwordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DFD1AE1DB953830071F14C /* EwordUITests.swift */; };
+		847283B31DBD8FF4005A5E6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847283B21DBD8FF4005A5E6A /* AppDelegate.swift */; };
+		847283B51DBD8FF4005A5E6A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847283B41DBD8FF4005A5E6A /* ViewController.swift */; };
+		847283B81DBD8FF4005A5E6A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847283B61DBD8FF4005A5E6A /* Main.storyboard */; };
+		847283BB1DBD8FF4005A5E6A /* eword.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 847283B91DBD8FF4005A5E6A /* eword.xcdatamodeld */; };
+		847283BD1DBD8FF4005A5E6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 847283BC1DBD8FF4005A5E6A /* Assets.xcassets */; };
+		847283C01DBD8FF4005A5E6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 847283BE1DBD8FF4005A5E6A /* LaunchScreen.storyboard */; };
+		847283CB1DBD8FF4005A5E6A /* ewordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847283CA1DBD8FF4005A5E6A /* ewordTests.swift */; };
+		847283D61DBD8FF4005A5E6A /* ewordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847283D51DBD8FF4005A5E6A /* ewordUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		84DFD1A01DB953830071F14C /* PBXContainerItemProxy */ = {
+		847283C71DBD8FF4005A5E6A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 84DFD1801DB953820071F14C /* Project object */;
+			containerPortal = 847283A71DBD8FF3005A5E6A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 84DFD1871DB953820071F14C;
-			remoteInfo = Eword;
+			remoteGlobalIDString = 847283AE1DBD8FF4005A5E6A;
+			remoteInfo = eword;
 		};
-		84DFD1AB1DB953830071F14C /* PBXContainerItemProxy */ = {
+		847283D21DBD8FF4005A5E6A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 84DFD1801DB953820071F14C /* Project object */;
+			containerPortal = 847283A71DBD8FF3005A5E6A /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 84DFD1871DB953820071F14C;
-			remoteInfo = Eword;
+			remoteGlobalIDString = 847283AE1DBD8FF4005A5E6A;
+			remoteInfo = eword;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		84DFD1881DB953820071F14C /* Eword.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eword.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		84DFD18B1DB953820071F14C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		84DFD18D1DB953820071F14C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		84DFD1901DB953820071F14C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		84DFD1931DB953820071F14C /* Eword.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Eword.xcdatamodel; sourceTree = "<group>"; };
-		84DFD1951DB953830071F14C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		84DFD1981DB953830071F14C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		84DFD19A1DB953830071F14C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84DFD19F1DB953830071F14C /* EwordTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EwordTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		84DFD1A31DB953830071F14C /* EwordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EwordTests.swift; sourceTree = "<group>"; };
-		84DFD1A51DB953830071F14C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84DFD1AA1DB953830071F14C /* EwordUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EwordUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		84DFD1AE1DB953830071F14C /* EwordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EwordUITests.swift; sourceTree = "<group>"; };
-		84DFD1B01DB953830071F14C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		847283AF1DBD8FF4005A5E6A /* eword.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eword.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		847283B21DBD8FF4005A5E6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		847283B41DBD8FF4005A5E6A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		847283B71DBD8FF4005A5E6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		847283BA1DBD8FF4005A5E6A /* eword.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = eword.xcdatamodel; sourceTree = "<group>"; };
+		847283BC1DBD8FF4005A5E6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		847283BF1DBD8FF4005A5E6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		847283C11DBD8FF4005A5E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		847283C61DBD8FF4005A5E6A /* ewordTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ewordTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		847283CA1DBD8FF4005A5E6A /* ewordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ewordTests.swift; sourceTree = "<group>"; };
+		847283CC1DBD8FF4005A5E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		847283D11DBD8FF4005A5E6A /* ewordUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ewordUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		847283D51DBD8FF4005A5E6A /* ewordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ewordUITests.swift; sourceTree = "<group>"; };
+		847283D71DBD8FF4005A5E6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		84DFD1851DB953820071F14C /* Frameworks */ = {
+		847283AC1DBD8FF4005A5E6A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		84DFD19C1DB953830071F14C /* Frameworks */ = {
+		847283C31DBD8FF4005A5E6A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		84DFD1A71DB953830071F14C /* Frameworks */ = {
+		847283CE1DBD8FF4005A5E6A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -76,141 +76,141 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		84DFD17F1DB953820071F14C = {
+		847283A61DBD8FF3005A5E6A = {
 			isa = PBXGroup;
 			children = (
-				84DFD18A1DB953820071F14C /* Eword */,
-				84DFD1A21DB953830071F14C /* EwordTests */,
-				84DFD1AD1DB953830071F14C /* EwordUITests */,
-				84DFD1891DB953820071F14C /* Products */,
+				847283B11DBD8FF4005A5E6A /* eword */,
+				847283C91DBD8FF4005A5E6A /* ewordTests */,
+				847283D41DBD8FF4005A5E6A /* ewordUITests */,
+				847283B01DBD8FF4005A5E6A /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		84DFD1891DB953820071F14C /* Products */ = {
+		847283B01DBD8FF4005A5E6A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				84DFD1881DB953820071F14C /* Eword.app */,
-				84DFD19F1DB953830071F14C /* EwordTests.xctest */,
-				84DFD1AA1DB953830071F14C /* EwordUITests.xctest */,
+				847283AF1DBD8FF4005A5E6A /* eword.app */,
+				847283C61DBD8FF4005A5E6A /* ewordTests.xctest */,
+				847283D11DBD8FF4005A5E6A /* ewordUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		84DFD18A1DB953820071F14C /* Eword */ = {
+		847283B11DBD8FF4005A5E6A /* eword */ = {
 			isa = PBXGroup;
 			children = (
-				84DFD18B1DB953820071F14C /* AppDelegate.swift */,
-				84DFD18D1DB953820071F14C /* ViewController.swift */,
-				84DFD18F1DB953820071F14C /* Main.storyboard */,
-				84DFD1951DB953830071F14C /* Assets.xcassets */,
-				84DFD1971DB953830071F14C /* LaunchScreen.storyboard */,
-				84DFD19A1DB953830071F14C /* Info.plist */,
-				84DFD1921DB953820071F14C /* Eword.xcdatamodeld */,
+				847283B21DBD8FF4005A5E6A /* AppDelegate.swift */,
+				847283B41DBD8FF4005A5E6A /* ViewController.swift */,
+				847283B61DBD8FF4005A5E6A /* Main.storyboard */,
+				847283BC1DBD8FF4005A5E6A /* Assets.xcassets */,
+				847283BE1DBD8FF4005A5E6A /* LaunchScreen.storyboard */,
+				847283C11DBD8FF4005A5E6A /* Info.plist */,
+				847283B91DBD8FF4005A5E6A /* eword.xcdatamodeld */,
 			);
-			path = Eword;
+			path = eword;
 			sourceTree = "<group>";
 		};
-		84DFD1A21DB953830071F14C /* EwordTests */ = {
+		847283C91DBD8FF4005A5E6A /* ewordTests */ = {
 			isa = PBXGroup;
 			children = (
-				84DFD1A31DB953830071F14C /* EwordTests.swift */,
-				84DFD1A51DB953830071F14C /* Info.plist */,
+				847283CA1DBD8FF4005A5E6A /* ewordTests.swift */,
+				847283CC1DBD8FF4005A5E6A /* Info.plist */,
 			);
-			path = EwordTests;
+			path = ewordTests;
 			sourceTree = "<group>";
 		};
-		84DFD1AD1DB953830071F14C /* EwordUITests */ = {
+		847283D41DBD8FF4005A5E6A /* ewordUITests */ = {
 			isa = PBXGroup;
 			children = (
-				84DFD1AE1DB953830071F14C /* EwordUITests.swift */,
-				84DFD1B01DB953830071F14C /* Info.plist */,
+				847283D51DBD8FF4005A5E6A /* ewordUITests.swift */,
+				847283D71DBD8FF4005A5E6A /* Info.plist */,
 			);
-			path = EwordUITests;
+			path = ewordUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		84DFD1871DB953820071F14C /* Eword */ = {
+		847283AE1DBD8FF4005A5E6A /* eword */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 84DFD1B31DB953830071F14C /* Build configuration list for PBXNativeTarget "Eword" */;
+			buildConfigurationList = 847283DA1DBD8FF4005A5E6A /* Build configuration list for PBXNativeTarget "eword" */;
 			buildPhases = (
-				84DFD1841DB953820071F14C /* Sources */,
-				84DFD1851DB953820071F14C /* Frameworks */,
-				84DFD1861DB953820071F14C /* Resources */,
+				847283AB1DBD8FF4005A5E6A /* Sources */,
+				847283AC1DBD8FF4005A5E6A /* Frameworks */,
+				847283AD1DBD8FF4005A5E6A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Eword;
-			productName = Eword;
-			productReference = 84DFD1881DB953820071F14C /* Eword.app */;
+			name = eword;
+			productName = eword;
+			productReference = 847283AF1DBD8FF4005A5E6A /* eword.app */;
 			productType = "com.apple.product-type.application";
 		};
-		84DFD19E1DB953830071F14C /* EwordTests */ = {
+		847283C51DBD8FF4005A5E6A /* ewordTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 84DFD1B61DB953830071F14C /* Build configuration list for PBXNativeTarget "EwordTests" */;
+			buildConfigurationList = 847283DD1DBD8FF4005A5E6A /* Build configuration list for PBXNativeTarget "ewordTests" */;
 			buildPhases = (
-				84DFD19B1DB953830071F14C /* Sources */,
-				84DFD19C1DB953830071F14C /* Frameworks */,
-				84DFD19D1DB953830071F14C /* Resources */,
+				847283C21DBD8FF4005A5E6A /* Sources */,
+				847283C31DBD8FF4005A5E6A /* Frameworks */,
+				847283C41DBD8FF4005A5E6A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				84DFD1A11DB953830071F14C /* PBXTargetDependency */,
+				847283C81DBD8FF4005A5E6A /* PBXTargetDependency */,
 			);
-			name = EwordTests;
-			productName = EwordTests;
-			productReference = 84DFD19F1DB953830071F14C /* EwordTests.xctest */;
+			name = ewordTests;
+			productName = ewordTests;
+			productReference = 847283C61DBD8FF4005A5E6A /* ewordTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		84DFD1A91DB953830071F14C /* EwordUITests */ = {
+		847283D01DBD8FF4005A5E6A /* ewordUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 84DFD1B91DB953830071F14C /* Build configuration list for PBXNativeTarget "EwordUITests" */;
+			buildConfigurationList = 847283E01DBD8FF4005A5E6A /* Build configuration list for PBXNativeTarget "ewordUITests" */;
 			buildPhases = (
-				84DFD1A61DB953830071F14C /* Sources */,
-				84DFD1A71DB953830071F14C /* Frameworks */,
-				84DFD1A81DB953830071F14C /* Resources */,
+				847283CD1DBD8FF4005A5E6A /* Sources */,
+				847283CE1DBD8FF4005A5E6A /* Frameworks */,
+				847283CF1DBD8FF4005A5E6A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				84DFD1AC1DB953830071F14C /* PBXTargetDependency */,
+				847283D31DBD8FF4005A5E6A /* PBXTargetDependency */,
 			);
-			name = EwordUITests;
-			productName = EwordUITests;
-			productReference = 84DFD1AA1DB953830071F14C /* EwordUITests.xctest */;
+			name = ewordUITests;
+			productName = ewordUITests;
+			productReference = 847283D11DBD8FF4005A5E6A /* ewordUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		84DFD1801DB953820071F14C /* Project object */ = {
+		847283A71DBD8FF3005A5E6A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Admin;
 				TargetAttributes = {
-					84DFD1871DB953820071F14C = {
+					847283AE1DBD8FF4005A5E6A = {
 						CreatedOnToolsVersion = 8.0;
 						ProvisioningStyle = Automatic;
 					};
-					84DFD19E1DB953830071F14C = {
+					847283C51DBD8FF4005A5E6A = {
 						CreatedOnToolsVersion = 8.0;
 						ProvisioningStyle = Automatic;
-						TestTargetID = 84DFD1871DB953820071F14C;
+						TestTargetID = 847283AE1DBD8FF4005A5E6A;
 					};
-					84DFD1A91DB953830071F14C = {
+					847283D01DBD8FF4005A5E6A = {
 						CreatedOnToolsVersion = 8.0;
 						ProvisioningStyle = Automatic;
-						TestTargetID = 84DFD1871DB953820071F14C;
+						TestTargetID = 847283AE1DBD8FF4005A5E6A;
 					};
 				};
 			};
-			buildConfigurationList = 84DFD1831DB953820071F14C /* Build configuration list for PBXProject "Eword" */;
+			buildConfigurationList = 847283AA1DBD8FF3005A5E6A /* Build configuration list for PBXProject "eword" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -218,37 +218,37 @@
 				en,
 				Base,
 			);
-			mainGroup = 84DFD17F1DB953820071F14C;
-			productRefGroup = 84DFD1891DB953820071F14C /* Products */;
+			mainGroup = 847283A61DBD8FF3005A5E6A;
+			productRefGroup = 847283B01DBD8FF4005A5E6A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				84DFD1871DB953820071F14C /* Eword */,
-				84DFD19E1DB953830071F14C /* EwordTests */,
-				84DFD1A91DB953830071F14C /* EwordUITests */,
+				847283AE1DBD8FF4005A5E6A /* eword */,
+				847283C51DBD8FF4005A5E6A /* ewordTests */,
+				847283D01DBD8FF4005A5E6A /* ewordUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		84DFD1861DB953820071F14C /* Resources */ = {
+		847283AD1DBD8FF4005A5E6A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84DFD1991DB953830071F14C /* LaunchScreen.storyboard in Resources */,
-				84DFD1961DB953830071F14C /* Assets.xcassets in Resources */,
-				84DFD1911DB953820071F14C /* Main.storyboard in Resources */,
+				847283C01DBD8FF4005A5E6A /* LaunchScreen.storyboard in Resources */,
+				847283BD1DBD8FF4005A5E6A /* Assets.xcassets in Resources */,
+				847283B81DBD8FF4005A5E6A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		84DFD19D1DB953830071F14C /* Resources */ = {
+		847283C41DBD8FF4005A5E6A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		84DFD1A81DB953830071F14C /* Resources */ = {
+		847283CF1DBD8FF4005A5E6A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -258,60 +258,60 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		84DFD1841DB953820071F14C /* Sources */ = {
+		847283AB1DBD8FF4005A5E6A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84DFD1941DB953820071F14C /* Eword.xcdatamodeld in Sources */,
-				84DFD18E1DB953820071F14C /* ViewController.swift in Sources */,
-				84DFD18C1DB953820071F14C /* AppDelegate.swift in Sources */,
+				847283B51DBD8FF4005A5E6A /* ViewController.swift in Sources */,
+				847283BB1DBD8FF4005A5E6A /* eword.xcdatamodeld in Sources */,
+				847283B31DBD8FF4005A5E6A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		84DFD19B1DB953830071F14C /* Sources */ = {
+		847283C21DBD8FF4005A5E6A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84DFD1A41DB953830071F14C /* EwordTests.swift in Sources */,
+				847283CB1DBD8FF4005A5E6A /* ewordTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		84DFD1A61DB953830071F14C /* Sources */ = {
+		847283CD1DBD8FF4005A5E6A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84DFD1AF1DB953830071F14C /* EwordUITests.swift in Sources */,
+				847283D61DBD8FF4005A5E6A /* ewordUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		84DFD1A11DB953830071F14C /* PBXTargetDependency */ = {
+		847283C81DBD8FF4005A5E6A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 84DFD1871DB953820071F14C /* Eword */;
-			targetProxy = 84DFD1A01DB953830071F14C /* PBXContainerItemProxy */;
+			target = 847283AE1DBD8FF4005A5E6A /* eword */;
+			targetProxy = 847283C71DBD8FF4005A5E6A /* PBXContainerItemProxy */;
 		};
-		84DFD1AC1DB953830071F14C /* PBXTargetDependency */ = {
+		847283D31DBD8FF4005A5E6A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 84DFD1871DB953820071F14C /* Eword */;
-			targetProxy = 84DFD1AB1DB953830071F14C /* PBXContainerItemProxy */;
+			target = 847283AE1DBD8FF4005A5E6A /* eword */;
+			targetProxy = 847283D21DBD8FF4005A5E6A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		84DFD18F1DB953820071F14C /* Main.storyboard */ = {
+		847283B61DBD8FF4005A5E6A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				84DFD1901DB953820071F14C /* Base */,
+				847283B71DBD8FF4005A5E6A /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		84DFD1971DB953830071F14C /* LaunchScreen.storyboard */ = {
+		847283BE1DBD8FF4005A5E6A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				84DFD1981DB953830071F14C /* Base */,
+				847283BF1DBD8FF4005A5E6A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -319,7 +319,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		84DFD1B11DB953830071F14C /* Debug */ = {
+		847283D81DBD8FF4005A5E6A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -369,7 +369,7 @@
 			};
 			name = Debug;
 		};
-		84DFD1B21DB953830071F14C /* Release */ = {
+		847283D91DBD8FF4005A5E6A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -412,134 +412,136 @@
 			};
 			name = Release;
 		};
-		84DFD1B41DB953830071F14C /* Debug */ = {
+		847283DB1DBD8FF4005A5E6A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Eword/Info.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer: David Walp (88FTPXGFFT)";
+				INFOPLIST_FILE = eword/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.keith.Eword;
+				PRODUCT_BUNDLE_IDENTIFIER = com.keith.eword;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
-		84DFD1B51DB953830071F14C /* Release */ = {
+		847283DC1DBD8FF4005A5E6A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = Eword/Info.plist;
+				CODE_SIGN_IDENTITY = "iPhone Developer: David Walp (88FTPXGFFT)";
+				INFOPLIST_FILE = eword/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.keith.Eword;
+				PRODUCT_BUNDLE_IDENTIFIER = com.keith.eword;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
-		84DFD1B71DB953830071F14C /* Debug */ = {
+		847283DE1DBD8FF4005A5E6A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = EwordTests/Info.plist;
+				INFOPLIST_FILE = ewordTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.keith.EwordTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.keith.ewordTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Eword.app/Eword";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eword.app/eword";
 			};
 			name = Debug;
 		};
-		84DFD1B81DB953830071F14C /* Release */ = {
+		847283DF1DBD8FF4005A5E6A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = EwordTests/Info.plist;
+				INFOPLIST_FILE = ewordTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.keith.EwordTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.keith.ewordTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Eword.app/Eword";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eword.app/eword";
 			};
 			name = Release;
 		};
-		84DFD1BA1DB953830071F14C /* Debug */ = {
+		847283E11DBD8FF4005A5E6A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = EwordUITests/Info.plist;
+				INFOPLIST_FILE = ewordUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.keith.EwordUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.keith.ewordUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = Eword;
+				TEST_TARGET_NAME = eword;
 			};
 			name = Debug;
 		};
-		84DFD1BB1DB953830071F14C /* Release */ = {
+		847283E21DBD8FF4005A5E6A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = EwordUITests/Info.plist;
+				INFOPLIST_FILE = ewordUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.keith.EwordUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.keith.ewordUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = Eword;
+				TEST_TARGET_NAME = eword;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		84DFD1831DB953820071F14C /* Build configuration list for PBXProject "Eword" */ = {
+		847283AA1DBD8FF3005A5E6A /* Build configuration list for PBXProject "eword" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				84DFD1B11DB953830071F14C /* Debug */,
-				84DFD1B21DB953830071F14C /* Release */,
+				847283D81DBD8FF4005A5E6A /* Debug */,
+				847283D91DBD8FF4005A5E6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		84DFD1B31DB953830071F14C /* Build configuration list for PBXNativeTarget "Eword" */ = {
+		847283DA1DBD8FF4005A5E6A /* Build configuration list for PBXNativeTarget "eword" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				84DFD1B41DB953830071F14C /* Debug */,
-				84DFD1B51DB953830071F14C /* Release */,
+				847283DB1DBD8FF4005A5E6A /* Debug */,
+				847283DC1DBD8FF4005A5E6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		84DFD1B61DB953830071F14C /* Build configuration list for PBXNativeTarget "EwordTests" */ = {
+		847283DD1DBD8FF4005A5E6A /* Build configuration list for PBXNativeTarget "ewordTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				84DFD1B71DB953830071F14C /* Debug */,
-				84DFD1B81DB953830071F14C /* Release */,
+				847283DE1DBD8FF4005A5E6A /* Debug */,
+				847283DF1DBD8FF4005A5E6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
-		84DFD1B91DB953830071F14C /* Build configuration list for PBXNativeTarget "EwordUITests" */ = {
+		847283E01DBD8FF4005A5E6A /* Build configuration list for PBXNativeTarget "ewordUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				84DFD1BA1DB953830071F14C /* Debug */,
-				84DFD1BB1DB953830071F14C /* Release */,
+				847283E11DBD8FF4005A5E6A /* Debug */,
+				847283E21DBD8FF4005A5E6A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		84DFD1921DB953820071F14C /* Eword.xcdatamodeld */ = {
+		847283B91DBD8FF4005A5E6A /* eword.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				84DFD1931DB953820071F14C /* Eword.xcdatamodel */,
+				847283BA1DBD8FF4005A5E6A /* eword.xcdatamodel */,
 			);
-			currentVersion = 84DFD1931DB953820071F14C /* Eword.xcdatamodel */;
-			path = Eword.xcdatamodeld;
+			currentVersion = 847283BA1DBD8FF4005A5E6A /* eword.xcdatamodel */;
+			path = eword.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
 	};
-	rootObject = 84DFD1801DB953820071F14C /* Project object */;
+	rootObject = 847283A71DBD8FF3005A5E6A /* Project object */;
 }

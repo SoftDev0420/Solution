@@ -1,15 +1,15 @@
 //
-//  EwordTests.swift
-//  EwordTests
+//  ewordTests.swift
+//  ewordTests
 //
-//  Created by Admin on 20/10/16.
+//  Created by Admin on 24/10/16.
 //  Copyright © 2016 Admin. All rights reserved.
 //
 
 import XCTest
-@testable import Eword
+@testable import eword
 
-class EwordTests: XCTestCase {
+class ewordTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
