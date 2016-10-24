@@ -20,6 +20,8 @@
 		847283EE1DBDAC1C005A5E6A /* SavedFilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847283ED1DBDAC1C005A5E6A /* SavedFilesViewController.swift */; };
 		847283F01DBDAC37005A5E6A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847283EF1DBDAC37005A5E6A /* SettingsViewController.swift */; };
 		847283F21DBDAC5B005A5E6A /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847283F11DBDAC5B005A5E6A /* AboutUsViewController.swift */; };
+		847283F51DBDB427005A5E6A /* DataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847283F41DBDB427005A5E6A /* DataClass.swift */; };
+		847283F71DBDF4DD005A5E6A /* DirectoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847283F61DBDF4DD005A5E6A /* DirectoryManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		847283ED1DBDAC1C005A5E6A /* SavedFilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedFilesViewController.swift; sourceTree = "<group>"; };
 		847283EF1DBDAC37005A5E6A /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		847283F11DBDAC5B005A5E6A /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
+		847283F41DBDB427005A5E6A /* DataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataClass.swift; path = eword/Helpers/DataClass.swift; sourceTree = SOURCE_ROOT; };
+		847283F61DBDF4DD005A5E6A /* DirectoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DirectoryManager.swift; path = eword/Helpers/DirectoryManager.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,7 @@
 			children = (
 				847283B21DBD8FF4005A5E6A /* AppDelegate.swift */,
 				847283E81DBDA14A005A5E6A /* Models */,
+				847283F31DBDB356005A5E6A /* Helpers */,
 				847283E51DBDA089005A5E6A /* ViewControllers */,
 				847283B61DBD8FF4005A5E6A /* Main.storyboard */,
 				847283BC1DBD8FF4005A5E6A /* Assets.xcassets */,
@@ -156,6 +161,16 @@
 			children = (
 				847283E91DBDA159005A5E6A /* Record.swift */,
 			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		847283F31DBDB356005A5E6A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				847283F41DBDB427005A5E6A /* DataClass.swift */,
+				847283F61DBDF4DD005A5E6A /* DirectoryManager.swift */,
+			);
+			name = Helpers;
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -296,9 +311,11 @@
 				847283F21DBDAC5B005A5E6A /* AboutUsViewController.swift in Sources */,
 				847283E71DBDA089005A5E6A /* RecordViewController.swift in Sources */,
 				847283BB1DBD8FF4005A5E6A /* eword.xcdatamodeld in Sources */,
+				847283F71DBDF4DD005A5E6A /* DirectoryManager.swift in Sources */,
 				847283F01DBDAC37005A5E6A /* SettingsViewController.swift in Sources */,
 				847283EE1DBDAC1C005A5E6A /* SavedFilesViewController.swift in Sources */,
 				847283EC1DBDA50E005A5E6A /* MainTabBarController.swift in Sources */,
+				847283F51DBDB427005A5E6A /* DataClass.swift in Sources */,
 				847283EA1DBDA159005A5E6A /* Record.swift in Sources */,
 				847283B31DBD8FF4005A5E6A /* AppDelegate.swift in Sources */,
 			);
