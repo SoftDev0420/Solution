@@ -22,6 +22,12 @@ class SettingsViewController: UIViewController {
     }
     
 
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    
+    
     /*
     // MARK: - Navigation
 

@@ -33,6 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let documentsDirectory = paths[0]
         _ = DirectoryManager.instance.addSkipBackupAttributeToItemAtURL(url: URL.init(fileURLWithPath: documentsDirectory))
         
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for:.normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.init(red: 0, green: 0.5, blue: 1.0, alpha: 1.0)], for:.selected)
+        
+        
         return true
     }
 
