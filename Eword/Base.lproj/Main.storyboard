@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Saved Files" id="pTv-JE-l2Q"/>
+                    <tabBarItem key="tabBarItem" title="Saved Files" image="DirectoryIcon" id="pTv-JE-l2Q"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Lr-7M-tbV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -57,7 +57,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="About Us" id="x4v-ee-95z"/>
+                    <tabBarItem key="tabBarItem" title="About Us" image="UserIcon" id="x4v-ee-95z"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qYS-fk-aRZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -87,7 +87,7 @@
                             <constraint firstItem="Q2w-Ox-0P9" firstAttribute="bottom" secondItem="WYB-gI-3mW" secondAttribute="top" id="k3x-Om-DW2"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Record" id="GVY-DS-h6j"/>
+                    <tabBarItem key="tabBarItem" title="Record" image="MicrophoneIcon" id="GVY-DS-h6j"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hIc-I6-vWb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -114,4 +114,9 @@
             <point key="canvasLocation" x="-804" y="-65"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="DirectoryIcon" width="30" height="30"/>
+        <image name="MicrophoneIcon" width="30" height="30"/>
+        <image name="UserIcon" width="30" height="30"/>
+    </resources>
 </document>
