@@ -1,0 +1,6 @@
+framework module Pods_ewordUITests {
+  umbrella header "Pods-ewordUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

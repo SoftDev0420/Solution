@@ -15,9 +15,29 @@
                         <viewControllerLayoutGuide type="bottom" id="IBy-ou-XcD"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="x1D-Lo-SDd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9qu-jC-HfZ">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="NKx-YO-TxC"/>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="NKx-YO-TxC" firstAttribute="top" secondItem="9qu-jC-HfZ" secondAttribute="top" id="6nn-2F-N3W"/>
+                                    <constraint firstItem="NKx-YO-TxC" firstAttribute="trailing" secondItem="9qu-jC-HfZ" secondAttribute="trailing" id="F9K-co-Fgf"/>
+                                    <constraint firstItem="NKx-YO-TxC" firstAttribute="leading" secondItem="9qu-jC-HfZ" secondAttribute="leading" id="Jc4-pb-1g6"/>
+                                    <constraint firstItem="NKx-YO-TxC" firstAttribute="bottom" secondItem="9qu-jC-HfZ" secondAttribute="bottom" id="gHt-8N-xKH"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9qu-jC-HfZ" firstAttribute="top" secondItem="yk3-rV-1Bi" secondAttribute="bottom" id="2xk-a8-ehS"/>
+                            <constraint firstItem="9qu-jC-HfZ" firstAttribute="leading" secondItem="x1D-Lo-SDd" secondAttribute="leading" id="DWm-UT-sIE"/>
+                            <constraint firstItem="9qu-jC-HfZ" firstAttribute="trailing" secondItem="x1D-Lo-SDd" secondAttribute="trailing" id="eAb-kS-8Fb"/>
+                            <constraint firstItem="9qu-jC-HfZ" firstAttribute="bottom" secondItem="IBy-ou-XcD" secondAttribute="top" id="zlL-w4-N03"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Saved Files" id="OB0-8b-4pF"/>
                 </viewController>
@@ -34,9 +54,29 @@
                         <viewControllerLayoutGuide type="bottom" id="rik-PR-mqs"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FtJ-4y-Rcw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LxI-xB-Ssx">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="UZb-Nx-O49"/>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="UZb-Nx-O49" firstAttribute="leading" secondItem="LxI-xB-Ssx" secondAttribute="leading" id="SaT-j8-Awy"/>
+                                    <constraint firstItem="UZb-Nx-O49" firstAttribute="top" secondItem="LxI-xB-Ssx" secondAttribute="top" id="UQ9-OE-H4r"/>
+                                    <constraint firstItem="UZb-Nx-O49" firstAttribute="bottom" secondItem="LxI-xB-Ssx" secondAttribute="bottom" id="og0-bV-FB3"/>
+                                    <constraint firstItem="UZb-Nx-O49" firstAttribute="trailing" secondItem="LxI-xB-Ssx" secondAttribute="trailing" id="wb4-vV-xII"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LxI-xB-Ssx" firstAttribute="top" secondItem="0l8-IP-Jaz" secondAttribute="bottom" id="KOD-nA-uTO"/>
+                            <constraint firstItem="LxI-xB-Ssx" firstAttribute="leading" secondItem="FtJ-4y-Rcw" secondAttribute="leading" id="aml-N2-hgc"/>
+                            <constraint firstItem="LxI-xB-Ssx" firstAttribute="bottom" secondItem="rik-PR-mqs" secondAttribute="top" id="fFR-Co-qkj"/>
+                            <constraint firstItem="LxI-xB-Ssx" firstAttribute="trailing" secondItem="FtJ-4y-Rcw" secondAttribute="trailing" id="x0B-DU-bTg"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="E8z-yj-85j"/>
                 </viewController>
@@ -44,7 +84,7 @@
             </objects>
             <point key="canvasLocation" x="-447" y="1343"/>
         </scene>
-        <!--Settings-->
+        <!--About Us-->
         <scene sceneID="EJP-dG-uXR">
             <objects>
                 <viewController id="QoN-Zv-rtQ" customClass="AboutUsViewController" customModule="eword" customModuleProvider="target" sceneMemberID="viewController">
@@ -53,11 +93,82 @@
                         <viewControllerLayoutGuide type="bottom" id="HPy-fi-cg4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="eZf-5t-pDi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rnz-Sb-Mn5">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="lsi-1q-ebR"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i1l-ki-ZNz">
+                                        <attributedString key="attributedText">
+                                            <fragment>
+                                                <string key="content">About eWord Solutions
+
+</string>
+                                                <attributes>
+                                                    <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <font key="NSFont" size="17" name="HelveticaNeue-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content">eWordsolutions.com is the #1 Med-Legal transcription company in the US. All of our work is done within the jurisdiction of the US. We never send your work overseas. What differentiates eWord Solutions from other transcription companies is the attention we give to our clients and the quality of work we produce. We treat every client like our only client.
+
+
+</string>
+                                                <attributes>
+                                                    <color key="NSBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content">98% Client Retention
+
+</string>
+                                                <attributes>
+                                                    <color key="NSBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="NSColor" red="0.18431372549019609" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="16" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment>
+                                                <string key="content">Since our founding, EWS has managed to retain 98% of all our customers by providing high quality transcription at affordable rates. Customers can submit their dictations 24 hour per day/ 7 days a week, from anywhere in the world and receive the transcribed documents within 2 to 24 hours.</string>
+                                                <attributes>
+                                                    <color key="NSBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="i1l-ki-ZNz" firstAttribute="leading" secondItem="Rnz-Sb-Mn5" secondAttribute="leading" constant="16" id="BGb-Qe-2jv"/>
+                                    <constraint firstItem="lsi-1q-ebR" firstAttribute="bottom" secondItem="Rnz-Sb-Mn5" secondAttribute="bottom" id="C8e-KT-gMY"/>
+                                    <constraint firstItem="lsi-1q-ebR" firstAttribute="leading" secondItem="Rnz-Sb-Mn5" secondAttribute="leading" id="R11-r2-PwV"/>
+                                    <constraint firstItem="lsi-1q-ebR" firstAttribute="trailing" secondItem="Rnz-Sb-Mn5" secondAttribute="trailing" id="Ur9-kx-NO6"/>
+                                    <constraint firstItem="i1l-ki-ZNz" firstAttribute="bottom" secondItem="Rnz-Sb-Mn5" secondAttribute="bottom" constant="-20" id="YVS-Hr-w0P"/>
+                                    <constraint firstItem="lsi-1q-ebR" firstAttribute="top" secondItem="Rnz-Sb-Mn5" secondAttribute="top" id="gj5-ZH-PAy"/>
+                                    <constraint firstItem="i1l-ki-ZNz" firstAttribute="top" secondItem="Rnz-Sb-Mn5" secondAttribute="top" constant="20" id="sGN-0e-aQm"/>
+                                    <constraint firstItem="i1l-ki-ZNz" firstAttribute="trailing" secondItem="Rnz-Sb-Mn5" secondAttribute="trailing" constant="-16" id="x52-sG-ODb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Rnz-Sb-Mn5" firstAttribute="leading" secondItem="eZf-5t-pDi" secondAttribute="leading" id="2WU-sh-lvS"/>
+                            <constraint firstItem="Rnz-Sb-Mn5" firstAttribute="top" secondItem="oHV-Fn-GON" secondAttribute="bottom" id="PzS-ZF-HNY"/>
+                            <constraint firstItem="Rnz-Sb-Mn5" firstAttribute="trailing" secondItem="eZf-5t-pDi" secondAttribute="trailing" id="d7N-Co-I0s"/>
+                            <constraint firstItem="Rnz-Sb-Mn5" firstAttribute="bottom" secondItem="HPy-fi-cg4" secondAttribute="top" id="i2I-gj-jCX"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Settings" id="7BG-tg-5wo"/>
+                    <navigationItem key="navigationItem" title="About Us" id="7BG-tg-5wo"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qYS-fk-aRZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -72,7 +183,7 @@
                         <viewControllerLayoutGuide type="bottom" id="WYB-gI-3mW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="4li-p1-oJD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q2w-Ox-0P9">
@@ -106,7 +217,7 @@
         <scene sceneID="eoz-8u-eLQ">
             <objects>
                 <tabBarController id="3wa-7P-poP" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="3WW-zP-P5g">
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="3WW-zP-P5g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -133,7 +244,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MiA-Xu-ByP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Record" image="MicrophoneIcon" id="GVY-DS-h6j"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="Pr7-7Z-tmM">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="Pr7-7Z-tmM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -152,7 +263,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Rla-7s-rHI" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Saved Files" image="DirectoryIcon" id="pTv-JE-l2Q"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="eFu-2C-hdd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="eFu-2C-hdd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -171,7 +282,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ryU-In-10e" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="SettingIcon" id="4bd-fn-buV"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="UjJ-el-LLz">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="UjJ-el-LLz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -190,7 +301,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="wIg-Db-zUp" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="About Us" image="UserIcon" id="x4v-ee-95z"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="xHy-au-aiQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="xHy-au-aiQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
