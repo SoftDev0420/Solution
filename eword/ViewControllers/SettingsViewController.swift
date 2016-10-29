@@ -7,9 +7,18 @@
 //
 
 import UIKit
+import MBProgressHUD
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var userName: UITextField!
+    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var checkImage: UIImageView!
+    @IBOutlet weak var rushText: UILabel!
+    @IBOutlet weak var eFileText: UILabel!
+    
+    var isRush: Bool = false, isEFile: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,4 +47,46 @@ class SettingsViewController: UIViewController {
     }
     */
 
+    ////////////////////////////////
+    
+    //  UITextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if (textField == userName) {
+            password.becomeFirstResponder()
+        }
+        else if (textField == password) {
+            view.endEditing(true)
+        }
+        return false
+    }
+    
+    
+    @IBAction func onRememberMe(_ sender: AnyObject) {
+        checkImage.isHidden = !checkImage.isHidden
+    }
+    
+    @IBAction func onRush(_ sender: AnyObject) {
+        isRush = !isRush
+        if (isRush) {
+            rushText.text = "  Yes"
+        }
+        else {
+            rushText.text = "  No"
+        }
+    }
+    
+    @IBAction func onEFile(_ sender: AnyObject) {
+        isEFile = !isEFile
+        if (isEFile) {
+            eFileText.text = "  Yes"
+        }
+        else {
+            eFileText.text = "  No"
+        }
+    }
+    
+    @IBAction func onSignIn(_ sender: AnyObject) {
+        
+    }
 }
