@@ -87,6 +87,11 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func onSignIn(_ sender: AnyObject) {
-        
+        if (userName.text == "" || password.text == "") {
+            Util.showAlertMessage(title: "Card Reader", message: "Username or Password is not valid.\nPlease re-enter them.", parent: self)
+        }
+        else {
+            
+        }
     }
 }
