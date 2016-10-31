@@ -120,7 +120,7 @@
                                                     <constraint firstAttribute="width" constant="25" id="A8D-Kw-nez"/>
                                                 </constraints>
                                             </view>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TickIcon" translatesAutoresizingMaskIntoConstraints="NO" id="V3b-6n-P7J"/>
+                                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TickIcon" translatesAutoresizingMaskIntoConstraints="NO" id="V3b-6n-P7J"/>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Kq-B1-lpH">
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -256,6 +256,8 @@
                     <connections>
                         <outlet property="checkImage" destination="V3b-6n-P7J" id="z6W-K0-Spj"/>
                         <outlet property="eFileText" destination="vx7-Nb-bLG" id="tuu-Db-ftD"/>
+                        <outlet property="mainViewBottomConstraint" destination="fFR-Co-qkj" id="ek8-dc-r9Y"/>
+                        <outlet property="mainViewTopConstraint" destination="KOD-nA-uTO" id="0GL-fY-ssn"/>
                         <outlet property="password" destination="3o5-rr-K2m" id="Ias-U5-51y"/>
                         <outlet property="rushText" destination="sQS-Xy-XVA" id="2u7-GD-Phm"/>
                         <outlet property="userName" destination="k2K-Yl-gQC" id="SaW-NU-1FH"/>

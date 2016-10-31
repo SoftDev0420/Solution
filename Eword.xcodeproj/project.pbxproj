@@ -29,6 +29,7 @@
 		848FB2191DC48ACC006B4B8E /* hexconvert.m in Sources */ = {isa = PBXBuildFile; fileRef = 848FB2131DC48ACC006B4B8E /* hexconvert.m */; };
 		848FB21A1DC48ACC006B4B8E /* NSWSDL.M in Sources */ = {isa = PBXBuildFile; fileRef = 848FB2151DC48ACC006B4B8E /* NSWSDL.M */; };
 		848FB21B1DC48ACC006B4B8E /* wsclient.m in Sources */ = {isa = PBXBuildFile; fileRef = 848FB2171DC48ACC006B4B8E /* wsclient.m */; };
+		84C271D91DC6D9C900EB0CC2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C271D81DC6D9C900EB0CC2 /* Reachability.m */; };
 		E9EA6A70F5E15E1F6DAEE39D /* Pods_ewordUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC82C9CD093751355BFB10BB /* Pods_ewordUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,9 @@
 		848FB2151DC48ACC006B4B8E /* NSWSDL.M */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NSWSDL.M; sourceTree = "<group>"; };
 		848FB2161DC48ACC006B4B8E /* wsclient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wsclient.h; sourceTree = "<group>"; };
 		848FB2171DC48ACC006B4B8E /* wsclient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = wsclient.m; sourceTree = "<group>"; };
+		84C271D71DC6D9C900EB0CC2 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		84C271D81DC6D9C900EB0CC2 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		84F1E15D1DC6746700CAF355 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		AEB2EAC7D55EE9380F1DA817 /* Pods-ewordTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ewordTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ewordTests/Pods-ewordTests.release.xcconfig"; sourceTree = "<group>"; };
 		CE2B6763BA773F9ED86791B5 /* Pods-ewordUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ewordUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ewordUITests/Pods-ewordUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D0EB3E77EE38DEBBB5BB5329 /* Pods-ewordUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ewordUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ewordUITests/Pods-ewordUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +178,7 @@
 				847283BC1DBD8FF4005A5E6A /* Assets.xcassets */,
 				847283BE1DBD8FF4005A5E6A /* LaunchScreen.storyboard */,
 				847283C11DBD8FF4005A5E6A /* Info.plist */,
+				84F1E15D1DC6746700CAF355 /* Bridging-Header.h */,
 				847283B91DBD8FF4005A5E6A /* eword.xcdatamodeld */,
 			);
 			path = eword;
@@ -221,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				848FB2101DC48ACC006B4B8E /* EwordSoapClient */,
+				84C271D61DC6D9C900EB0CC2 /* Reachability */,
 				847283F41DBDB427005A5E6A /* DataClass.swift */,
 				847283F61DBDF4DD005A5E6A /* DirectoryManager.swift */,
 				848FB20E1DC452FF006B4B8E /* Util.swift */,
@@ -242,6 +248,16 @@
 			);
 			name = EwordSoapClient;
 			path = eword/Helpers/EwordSoapClient;
+			sourceTree = SOURCE_ROOT;
+		};
+		84C271D61DC6D9C900EB0CC2 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				84C271D71DC6D9C900EB0CC2 /* Reachability.h */,
+				84C271D81DC6D9C900EB0CC2 /* Reachability.m */,
+			);
+			name = Reachability;
+			path = eword/Helpers/Reachability;
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
@@ -530,6 +546,7 @@
 				848FB21A1DC48ACC006B4B8E /* NSWSDL.M in Sources */,
 				847283F21DBDAC5B005A5E6A /* AboutUsViewController.swift in Sources */,
 				847283E71DBDA089005A5E6A /* RecordViewController.swift in Sources */,
+				84C271D91DC6D9C900EB0CC2 /* Reachability.m in Sources */,
 				847283BB1DBD8FF4005A5E6A /* eword.xcdatamodeld in Sources */,
 				847283F71DBDF4DD005A5E6A /* DirectoryManager.swift in Sources */,
 				848FB2191DC48ACC006B4B8E /* hexconvert.m in Sources */,
@@ -612,6 +629,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -662,6 +680,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -697,6 +716,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keith.eword1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "eword/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -711,6 +731,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.keith.eword1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "eword/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

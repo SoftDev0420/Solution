@@ -6,6 +6,8 @@
 //  Copyright © 2016 Admin. All rights reserved.
 //
 
+import UIKit
+
 class Util {
     class func showAlertMessage(title: String, message: String, parent: UIViewController) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
