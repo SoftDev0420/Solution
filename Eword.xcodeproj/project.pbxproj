@@ -30,6 +30,7 @@
 		848FB21A1DC48ACC006B4B8E /* NSWSDL.M in Sources */ = {isa = PBXBuildFile; fileRef = 848FB2151DC48ACC006B4B8E /* NSWSDL.M */; };
 		848FB21B1DC48ACC006B4B8E /* wsclient.m in Sources */ = {isa = PBXBuildFile; fileRef = 848FB2171DC48ACC006B4B8E /* wsclient.m */; };
 		84C271D91DC6D9C900EB0CC2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C271D81DC6D9C900EB0CC2 /* Reachability.m */; };
+		84C271DC1DC889AF00EB0CC2 /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C271DB1DC889AF00EB0CC2 /* RecordCell.swift */; };
 		E9EA6A70F5E15E1F6DAEE39D /* Pods_ewordUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC82C9CD093751355BFB10BB /* Pods_ewordUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		848FB2171DC48ACC006B4B8E /* wsclient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = wsclient.m; sourceTree = "<group>"; };
 		84C271D71DC6D9C900EB0CC2 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		84C271D81DC6D9C900EB0CC2 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		84C271DB1DC889AF00EB0CC2 /* RecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecordCell.swift; path = Views/RecordCell.swift; sourceTree = "<group>"; };
 		84F1E15D1DC6746700CAF355 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		AEB2EAC7D55EE9380F1DA817 /* Pods-ewordTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ewordTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ewordTests/Pods-ewordTests.release.xcconfig"; sourceTree = "<group>"; };
 		CE2B6763BA773F9ED86791B5 /* Pods-ewordUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ewordUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ewordUITests/Pods-ewordUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				847283B21DBD8FF4005A5E6A /* AppDelegate.swift */,
 				847283E81DBDA14A005A5E6A /* Models */,
 				847283F31DBDB356005A5E6A /* Helpers */,
+				84C271DA1DC8896400EB0CC2 /* View */,
 				847283E51DBDA089005A5E6A /* ViewControllers */,
 				847283B61DBD8FF4005A5E6A /* Main.storyboard */,
 				847283BC1DBD8FF4005A5E6A /* Assets.xcassets */,
@@ -259,6 +262,14 @@
 			name = Reachability;
 			path = eword/Helpers/Reachability;
 			sourceTree = SOURCE_ROOT;
+		};
+		84C271DA1DC8896400EB0CC2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				84C271DB1DC889AF00EB0CC2 /* RecordCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -552,6 +563,7 @@
 				848FB2191DC48ACC006B4B8E /* hexconvert.m in Sources */,
 				847283F01DBDAC37005A5E6A /* SettingsViewController.swift in Sources */,
 				847283EE1DBDAC1C005A5E6A /* SavedFilesViewController.swift in Sources */,
+				84C271DC1DC889AF00EB0CC2 /* RecordCell.swift in Sources */,
 				847283EC1DBDA50E005A5E6A /* MainTabBarController.swift in Sources */,
 				847283F51DBDB427005A5E6A /* DataClass.swift in Sources */,
 				847283EA1DBDA159005A5E6A /* Record.swift in Sources */,
