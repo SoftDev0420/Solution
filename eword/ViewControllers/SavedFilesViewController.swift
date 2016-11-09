@@ -21,7 +21,6 @@ class SavedFilesViewController: UIViewController, UITableViewDelegate, UITableVi
     var leftButton: UIBarButtonItem?
     
     let managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).getManagedObjectContext()
-    var fetchedResultsController: NSFetchedResultsController<Record>?
     
     var todayArray = [Record]()
     var lastWeekArray = [Record]()
@@ -164,6 +163,48 @@ class SavedFilesViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let editViewController = storyboard!.instantiateViewController(withIdentifier: "EditViewController") as! EditViewController
+        if (indexPath.section == 1) {
+            editViewController.record = olderArray[indexPath.row]
+        }
+        else {
+            if (todayArray.count > 0) {
+                editViewController.record = todayArray[indexPath.row]
+            }
+            else {
+                editViewController.record = olderArray[indexPath.row]
+            }
+        }
+        navigationController!.pushViewController(editViewController, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            let record: Record
+            if (indexPath.section == 1) {
+                record = olderArray[indexPath.row]
+            }
+            else {
+                if (todayArray.count > 0) {
+                    record = todayArray[indexPath.row]
+                }
+                else {
+                    record = olderArray[indexPath.row]
+                }
+            }
+            DirectoryManager.instance.deleteFileAtPath(folderName: KFolder, fileName: record.fileName!)
+            deleteFromCoreDataWithName(name: record.fileName!)
+            setBadge()
+            reload()
+        }
+    }
+    
     ////////////////////////////////
     
     func reload() {
@@ -231,5 +272,27 @@ class SavedFilesViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         return minutesStr + ":" + secondsStr
+    }
+    
+    func deleteFromCoreDataWithName(name: String) {
+        let fetchRequest = NSFetchRequest<Record>()
+        fetchRequest.entity = NSEntityDescription.entity(forEntityName: "Record", in: managedObjectContext!)
+        fetchRequest.predicate = NSPredicate.init(format: "fileName = %@", name)
+        do {
+            let results = try managedObjectContext!.fetch(fetchRequest) as [Record]
+            let record = results.last
+            if (record != nil) {
+                managedObjectContext!.delete(record!)
+                do {
+                    try managedObjectContext!.save()
+                }
+                catch {
+                    
+                }
+            }
+        }
+        catch {
+            
+        }
     }
 }

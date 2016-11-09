@@ -6,8 +6,6 @@
 //  Copyright © 2016 Admin. All rights reserved.
 //
 
-import Foundation
-
 class DirectoryManager {
     static let instance = DirectoryManager()
     
@@ -123,12 +121,12 @@ class DirectoryManager {
         }
     }
     
-    func getPathForFileWithType(type: String, name: String) -> String {
+    func getPathForFileWithType(type: String?, name: String) -> String {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentDirectory = paths[0] as String
         var folderPath = documentDirectory
-        if (type != "") {
-            folderPath += type
+        if (type != nil && type != "") {
+            folderPath += type!
         }
         let filePath = folderPath + name
         
