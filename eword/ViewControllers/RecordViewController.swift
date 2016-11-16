@@ -113,10 +113,10 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         timer?.invalidate()
         recordTimer?.invalidate()
         
-        if (recorder!.isRecording) {
+        if (recorder != nil && recorder!.isRecording) {
             recorder = nil
         }
-        if (player!.isPlaying) {
+        if (player != nil && player!.isPlaying) {
             player!.stop()
         }
         player = nil
@@ -172,7 +172,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         else {
             deleteFileWithName(KMaster, type: "")
             setUpRecorderWithName(KMaster)
-            masterURL = recorder!.url
+            masterURL = recorder?.url
             ticks = 0
             recordTime.text = timeForTicks(ticks)
         }
@@ -195,7 +195,14 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     }
     
     func updateProgressWithTag(_ index: Int) {
-        
+        for i in 0 ... 14 {
+            if (i < index) {
+                progressViews[i].isHidden = false
+            }
+            else {
+                progressViews[i].isHidden = true
+            }
+        }
     }
     
     func lengthForUrl(_ url: URL) -> Float {
@@ -238,11 +245,11 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             return
         }
         
-        var recordSetting = [String : Any]()
-        recordSetting[AVFormatIDKey] = kAudioFormatMPEG4AAC
-        recordSetting[AVSampleRateKey] = 44100.0
-        recordSetting[AVNumberOfChannelsKey] = 1
-        recordSetting[AVEncoderBitDepthHintKey] = 16
+        var recordSetting = [String : AnyObject]()
+        recordSetting[AVFormatIDKey] = NSNumber(value: kAudioFormatMPEG4AAC)
+        recordSetting[AVSampleRateKey] = NSNumber(value: 44100.0)
+        recordSetting[AVNumberOfChannelsKey] = NSNumber(value: 1)
+        recordSetting[AVEncoderBitDepthHintKey] = NSNumber(value: 16)
         
         do {
             recorder = try AVAudioRecorder(url: outputFileUrl, settings: recordSetting)
@@ -315,11 +322,22 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     }
     
     func setSoundMeter() {
-        
+        recorder?.updateMeters()
+        let lowPassResults = pow(10, (0.05 * recorder!.peakPower(forChannel: 0)))
+        var tag = 1
+        for i in 1...15 {
+            let b = Float(i) / 15.0
+            if (lowPassResults <= b) {
+                tag = i
+                break
+            }
+        }
+        updateProgressWithTag(tag)
     }
     
     func updateRecordingDuration() {
-        
+        ticks = ticks + 1
+        recordTime.text = timeForTicks(ticks)
     }
     
     @IBAction func onPlay(_ sender: AnyObject) {
@@ -376,7 +394,9 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     }
     
     @IBAction func onPlayBack(_ sender: AnyObject) {
-        
+        player?.currentTime = player!.currentTime - 5
+        seekBar.value = Float(player!.currentTime)
+        playTime.text = timeForTicks(Int(player!.currentTime)) + "/" + timeForTicks(Int(lengthForUrl(masterURL!)))
     }
     
     @IBAction func onSubmit(_ sender: AnyObject) {
@@ -452,6 +472,21 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         present(imagePicker, animated: true, completion: nil)
     }
     
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        dismissPicker()
+        let rawImage = info[UIImagePickerControllerOriginalImage]
+        imageView.image = rawImage as! UIImage?
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismissPicker()
+    }
+    
+    func dismissPicker() {
+        isCamera = true
+        imagePicker.dismiss(animated: false, completion: nil)
+    }
+    
     //////////////////////////////
     
     func pauseRecording() {
@@ -494,6 +529,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             saveInCoreDataWithName(name!)
             setBadge()
         }
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        setSliderAndLabel()
+        timer?.invalidate()
+        playButton.setImage(UIImage(named: "PlayIcon"), for: .normal)
     }
     
     //////////////////////////////
