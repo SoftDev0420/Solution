@@ -9,9 +9,9 @@
 import CoreData
 
 class Record : NSManagedObject {
-    dynamic var type: String?
-    dynamic var date: Date?
-    dynamic var submitted: NSNumber?
-    dynamic var length: NSNumber?
-    dynamic var fileName: String?
+    @NSManaged var type: String?
+    @NSManaged var date: Date?
+    @NSManaged var submitted: NSNumber?
+    @NSManaged var length: NSNumber?
+    @NSManaged var fileName: String?
 }

@@ -97,7 +97,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
                 pauseRecording()
                 seekBar.minimumValue = 0
                 seekBar.maximumValue = Float(player!.duration)
-                playButton.setImage(UIImage(named: "PlayIcon"), for: .normal)
+                playButton.setBackgroundImage(UIImage(named: "PlayIcon"), for: .normal)
             }
             catch {
                 
@@ -142,7 +142,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
                 tabBarController!.tabBar.items![1].badgeValue = String(count)
             }
             else {
-                tabBarController!.tabBar.items![1].badgeValue = ""
+                tabBarController!.tabBar.items![1].badgeValue = nil
             }
         }
         catch {
@@ -161,7 +161,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     func getReadyForRecord() {
         imageView.image = nil
         loadingIndicator?.hide(animated: true)
-//        updateProgressWithTag(index: 0)
+        updateProgressWithTag(0)
         eraseButton.isHidden = true
         if (continueRecord) {
             deleteFileWithName(KUpdate, type: "")
@@ -172,7 +172,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         else {
             deleteFileWithName(KMaster, type: "")
             setUpRecorderWithName(KMaster)
-            masterURL = recorder?.url
+            masterURL = recorder!.url
             ticks = 0
             recordTime.text = timeForTicks(ticks)
         }
@@ -184,6 +184,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         progressView.isHidden = true
         recordButton.setTitle("Record", for: .normal)
         recordButton.isHidden = false
+        recordTime.isHidden = false
         playTime.isHidden = true
         seekBar.isHidden = true
         saveButton.isHidden = true
@@ -191,7 +192,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         playButton.isHidden = true
         resumeView.isHidden = true
         playBackView.isHidden = true
-        playButton.setImage(UIImage(named: "PlayIcon"), for: .normal)
+        playButton.setBackgroundImage(UIImage(named: "PlayIcon"), for: .normal)
     }
     
     func updateProgressWithTag(_ index: Int) {
@@ -297,7 +298,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         else {
             setSliderAndLabel()
             timer?.invalidate()
-            playButton.setImage(UIImage(named: "PlayIcon"), for: .normal)
+            playButton.setBackgroundImage(UIImage(named: "PlayIcon"), for: .normal)
         }
     }
     
@@ -307,8 +308,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         if (recorder!.isRecording) {
             recorder!.stop()
             recordButton.isEnabled = false
-            timer?.invalidate()
-            recordTimer?.invalidate()
+            timer!.invalidate()
+            recordTimer!.invalidate()
             updateProgressWithTag(0)
         }
         else {
@@ -344,27 +345,39 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         if (player != nil) {
             if (player!.isPlaying) {
                 player!.pause()
-                timer?.invalidate()
-                playButton.setImage(UIImage(named: "PlayIcon"), for: .normal)
+                timer!.invalidate()
+                playButton.setBackgroundImage(UIImage(named: "PlayIcon"), for: .normal)
             }
             else {
                 player!.play()
                 startSlider()
-                playButton.setImage(UIImage(named: "PauseIcon"), for: .normal)
+                playButton.setBackgroundImage(UIImage(named: "PauseIcon"), for: .normal)
             }
         }
         else {
-            timer?.invalidate()
-            recordTimer?.invalidate()
+            timer!.invalidate()
+            recordTimer!.invalidate()
+            do {
+                player = try AVAudioPlayer(contentsOf: masterURL!)
+            }
+            catch {
+                print(error)
+            }
+            player!.delegate = self
+            player!.play()
+            startSlider()
+            playButton.setBackgroundImage(UIImage(named: "PauseIcon"), for: .normal)
         }
     }
     
     @IBAction func continueRecord(_ sender: AnyObject) {
-        player?.stop()
-        timer?.invalidate()
+        if (player != nil) {
+            player!.stop()
+        }
+        timer!.invalidate()
         continueRecord = true
         getReadyForRecord()
-        playButton.setImage(UIImage(named: "PlayIcon"), for: .normal)
+        playButton.setBackgroundImage(UIImage(named: "PlayIcon"), for: .normal)
         onRecord(recordButton)
     }
     
@@ -380,7 +393,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     }
     
     func eraseToEnd() {
-        if (player!.isPlaying) {
+        if (player != nil && player!.isPlaying) {
             player!.stop()
         }
         continueRecord = false
@@ -394,7 +407,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     }
     
     @IBAction func onPlayBack(_ sender: AnyObject) {
-        player?.currentTime = player!.currentTime - 5
+        player!.currentTime = player!.currentTime - 5
         seekBar.value = Float(player!.currentTime)
         playTime.text = timeForTicks(Int(player!.currentTime)) + "/" + timeForTicks(Int(lengthForUrl(masterURL!)))
     }
@@ -417,7 +430,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     }
     
     @IBAction func onSave(_ sender: AnyObject) {
-        if (player!.isPlaying) {
+        if (player != nil && player!.isPlaying) {
             player!.stop()
         }
         
@@ -515,9 +528,11 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     //////////////////////////////
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        timer?.invalidate()
+        timer!.invalidate()
         recordingText.isHidden = true
         progressView.isHidden = true
+        print(recorder.url)
+        print(masterURL!)
         if (recorder.url != masterURL!) {
             recordButton.isEnabled = false
             _ = combineFilesFor(recorder.url)
@@ -533,8 +548,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         setSliderAndLabel()
-        timer?.invalidate()
-        playButton.setImage(UIImage(named: "PlayIcon"), for: .normal)
+        timer!.invalidate()
+        playButton.setBackgroundImage(UIImage(named: "PlayIcon"), for: .normal)
     }
     
     //////////////////////////////
@@ -554,19 +569,17 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             _ = existingAudioDurationSeconds + newAudioDurationSeconds
             let sourceUrls = [self.masterURL!, url]
             
-            var afIn: ExtAudioFileRef?
-            var afOut: ExtAudioFileRef?
+            var afIn: ExtAudioFileRef? = nil
+            var afOut: ExtAudioFileRef? = nil
             var inputFileFormat = AudioStreamBasicDescription()
             var outputFileFormat = AudioStreamBasicDescription()
             var converterFileFormat = AudioStreamBasicDescription()
-            var propertySize = UInt32()
+            var propertySize = UInt32(MemoryLayout<AudioStreamBasicDescription>.size)
             var buffer: UnsafeMutableRawPointer
             
             for inUrl in sourceUrls {
                 var status = ExtAudioFileOpenURL(inUrl as CFURL, &afIn)
-                bzero(&inputFileFormat, MemoryLayout<AudioStreamBasicDescription>.size)
                 status = ExtAudioFileGetProperty(afIn!, kExtAudioFileProperty_FileDataFormat, &propertySize, &inputFileFormat)
-                memset(&converterFileFormat, 0, MemoryLayout<AudioStreamBasicDescription>.size)
                 converterFileFormat.mFormatID = kAudioFormatLinearPCM
                 converterFileFormat.mSampleRate = inputFileFormat.mSampleRate
                 converterFileFormat.mChannelsPerFrame = 1
@@ -582,7 +595,6 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
                 }
                 
                 if (afOut == nil) {
-                    memset(&outputFileFormat, 0, MemoryLayout<AudioStreamBasicDescription>.size)
                     outputFileFormat.mFormatID = kAudioFormatMPEG4AAC
                     outputFileFormat.mFormatFlags = AudioFormatFlags(MPEG4ObjectID.aac_Main.rawValue)
                     outputFileFormat.mSampleRate = inputFileFormat.mSampleRate
@@ -719,11 +731,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     }
     
     func deleteFromCoreDataWithName() {
+        var results = [Record]()
         let fetchRequest = NSFetchRequest<Record>()
         fetchRequest.entity = NSEntityDescription.entity(forEntityName: "Record", in: managedObjectContext!)
         fetchRequest.predicate = NSPredicate.init(format: "fileName = %@", name!)
         do {
-            let results = try managedObjectContext!.fetch(fetchRequest) as [Record]
+            results = try managedObjectContext!.fetch(fetchRequest)
             let record = results.last
             if (record != nil) {
                 managedObjectContext!.delete(record!)

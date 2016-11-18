@@ -214,6 +214,7 @@ class SavedFilesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func getAllMediaData(date: String) -> [Record] {
+        var results = [Record]()
         let fetchRequest = NSFetchRequest<Record>(entityName: "Record")
         if (date == KToday) {
             fetchRequest.predicate = NSPredicate(format: "date >= %@", calculateDate() as CVarArg)
@@ -224,11 +225,12 @@ class SavedFilesViewController: UIViewController, UITableViewDelegate, UITableVi
         let sortDesciptor = NSSortDescriptor.init(key: "date", ascending: false)
         fetchRequest.sortDescriptors = [sortDesciptor]
         do {
-            return try managedObjectContext!.fetch(fetchRequest) as [Record]
+            results = try managedObjectContext!.fetch(fetchRequest)
         }
         catch {
-            return []
+            print(error)
         }
+        return results
     }
     
     func calculateDate() -> Date {
@@ -249,7 +251,7 @@ class SavedFilesViewController: UIViewController, UITableViewDelegate, UITableVi
                 tabBarController!.tabBar.items![1].badgeValue = String(count)
             }
             else {
-                tabBarController!.tabBar.items![1].badgeValue = ""
+                tabBarController!.tabBar.items![1].badgeValue = nil
             }
         }
         catch {
@@ -275,24 +277,20 @@ class SavedFilesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func deleteFromCoreDataWithName(name: String) {
+        var results = [Record]()
         let fetchRequest = NSFetchRequest<Record>()
         fetchRequest.entity = NSEntityDescription.entity(forEntityName: "Record", in: managedObjectContext!)
         fetchRequest.predicate = NSPredicate.init(format: "fileName = %@", name)
         do {
-            let results = try managedObjectContext!.fetch(fetchRequest) as [Record]
+            results = try managedObjectContext!.fetch(fetchRequest)
             let record = results.last
             if (record != nil) {
                 managedObjectContext!.delete(record!)
-                do {
-                    try managedObjectContext!.save()
-                }
-                catch {
-                    
-                }
+                try managedObjectContext!.save()
             }
         }
         catch {
-            
+            print(error)
         }
     }
 }

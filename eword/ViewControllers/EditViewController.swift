@@ -104,6 +104,7 @@ class EditViewController: UIViewController, MFMailComposeViewControllerDelegate 
         DirectoryManager.instance.deleteFileAtPath(folderName: KFolder, fileName: record!.fileName!)
         deleteFromCoreDataWithName(name: record!.fileName!)
         setBadge()
+        navigationController!.popViewController(animated: true)
     }
     
     ////////////////////////////////
@@ -118,7 +119,7 @@ class EditViewController: UIViewController, MFMailComposeViewControllerDelegate 
                 tabBarController!.tabBar.items![1].badgeValue = String(count)
             }
             else {
-                tabBarController!.tabBar.items![1].badgeValue = ""
+                tabBarController!.tabBar.items![1].badgeValue = nil
             }
         }
         catch {
