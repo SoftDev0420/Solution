@@ -147,7 +147,7 @@ class SavedFilesViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         
         cell.name.text = record.fileName
-        cell.time.text = durationFor(ticks: record.length!.intValue)
+        cell.time.text = Util.timeForTicks(record.length!.doubleValue)
         if (record.submitted!.isEqual(to: NSNumber(value: 1))) {
             cell.status.text = "Submitted"
         }
@@ -257,23 +257,6 @@ class SavedFilesViewController: UIViewController, UITableViewDelegate, UITableVi
         catch {
             
         }
-    }
-    
-    func durationFor(ticks: Int) -> String {
-        let seconds = ticks % 60
-        let minutes = ticks / 60
-        
-        var secondsStr = String(seconds)
-        if (seconds < 10) {
-            secondsStr = "0" + secondsStr
-        }
-        
-        var minutesStr = String(minutes)
-        if (minutes < 10) {
-            minutesStr = "0" + minutesStr
-        }
-        
-        return minutesStr + ":" + secondsStr
     }
     
     func deleteFromCoreDataWithName(name: String) {

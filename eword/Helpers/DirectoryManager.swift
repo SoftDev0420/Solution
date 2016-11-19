@@ -86,17 +86,17 @@ class DirectoryManager {
         if (!FileManager.default.fileExists(atPath: folderPath)) {
             do {
                 try FileManager.default.createDirectory(atPath: folderPath, withIntermediateDirectories: false, attributes: nil)
-                _ = addSkipBackupAttributeToItemAtURL(url: URL(fileURLWithPath: folderPath))
-                let filePath = (folderPath as NSString).appendingPathComponent(name)
-                if (FileManager.default.fileExists(atPath: filePath)) {
-                    deleteFileAtPath(folderName: type, fileName: name)
-                }
-                fileData.write(toFile: filePath, atomically: true)
             }
             catch {
                 print("saveDataAtDirectoryForType error")
             }
         }
+        _ = addSkipBackupAttributeToItemAtURL(url: URL(fileURLWithPath: folderPath))
+        let filePath = (folderPath as NSString).appendingPathComponent(name)
+        if (FileManager.default.fileExists(atPath: filePath)) {
+            deleteFileAtPath(folderName: type, fileName: name)
+        }
+        fileData.write(toFile: filePath, atomically: true)
     }
     
     func loadFileFromDirectoryForType(folderName: String, name: String) -> NSData? {
@@ -126,9 +126,9 @@ class DirectoryManager {
         let documentDirectory = paths[0] as String
         var folderPath = documentDirectory
         if (type != nil && type != "") {
-            folderPath += type!
+            folderPath = (folderPath as NSString).appendingPathComponent(type!)
         }
-        let filePath = folderPath + name
+        let filePath = (folderPath as NSString).appendingPathComponent(name)
         
         return filePath
     }

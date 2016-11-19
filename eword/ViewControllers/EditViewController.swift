@@ -51,7 +51,7 @@ class EditViewController: UIViewController, MFMailComposeViewControllerDelegate 
     ////////////////////////////////
     
     func reload() {
-        length.text = durationFor(ticks: record!.length!.intValue)
+        length.text = Util.timeForTicks(record!.length!.doubleValue)
         if (record!.submitted!.intValue == 1) {
             status.text = "Submitted"
         }
@@ -68,9 +68,11 @@ class EditViewController: UIViewController, MFMailComposeViewControllerDelegate 
     @IBAction func onEdit(_ sender: Any) {
         let secondTabNavigationController = tabBarController!.viewControllers![0] as! UINavigationController
         secondTabNavigationController.popToRootViewController(animated: true)
-        _ = secondTabNavigationController.viewControllers[0] as! RecordViewController
-//        recordViewController.isEdit = true
-//        recordViewController.recording = record
+        let recordViewController = secondTabNavigationController.viewControllers[0] as! RecordViewController
+        recordViewController.isEdit = true
+        recordViewController.recording = record
+        tabBarController!.selectedIndex = 0
+        navigationController!.popViewController(animated: false)
     }
     
     @IBAction func onEmail(_ sender: Any) {
@@ -125,23 +127,6 @@ class EditViewController: UIViewController, MFMailComposeViewControllerDelegate 
         catch {
             
         }
-    }
-    
-    func durationFor(ticks: Int) -> String {
-        let seconds = ticks % 60
-        let minutes = ticks / 60
-        
-        var secondsStr = String(seconds)
-        if (seconds < 10) {
-            secondsStr = "0" + secondsStr
-        }
-        
-        var minutesStr = String(minutes)
-        if (minutes < 10) {
-            minutesStr = "0" + minutesStr
-        }
-        
-        return minutesStr + ":" + secondsStr
     }
     
     func deleteFromCoreDataWithName(name: String) {

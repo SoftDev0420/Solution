@@ -42,13 +42,13 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     
     var isEdit = false
     var isCamera = false
-    var continueRecord = false
+    var isContinueRecord = false
     var masterURL: URL?
     var combinedURL: URL?
     var recordedData: Data?
     var flag: String?
-    var timer, recordTimer: Timer?
-    var ticks = 0
+    var meterTimer, playTimer, recordTimer: Timer?
+    var ticks = 0.0
     var fileType, name: String?
     var recording: Record?
     
@@ -82,26 +82,18 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        continueRecord = false
+        isContinueRecord = false
         if (isEdit) {
-            continueRecord = true
+            isContinueRecord = true
             _ = DirectoryManager.instance.listAllFilesForType(type: KFolder)
             let source = DirectoryManager.instance.getPathForFileWithType(type: KFolder, name: recording!.fileName!)
             let destination = DirectoryManager.instance.getPathForFileWithType(type: nil, name: KMaster)
             DirectoryManager.instance.copyFrom(source: source, destination: destination)
             masterURL = URL(fileURLWithPath: destination)
-            ticks = Int(lengthForUrl(masterURL!))
-            do {
-                player = try AVAudioPlayer(contentsOf: masterURL!)
-                name = recording!.fileName!
-                pauseRecording()
-                seekBar.minimumValue = 0
-                seekBar.maximumValue = Float(player!.duration)
-                playButton.setBackgroundImage(UIImage(named: "PlayIcon"), for: .normal)
-            }
-            catch {
-                
-            }
+            setupPlayer()
+            pauseRecording()
+            name = recording!.fileName!
+            playButton.setBackgroundImage(UIImage(named: "PlayIcon"), for: .normal)
         }
     }
 
@@ -109,13 +101,16 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         super.viewDidAppear(animated)
         
         isEdit = false
-        continueRecord = false
-        timer?.invalidate()
+        isContinueRecord = false
+        meterTimer?.invalidate()
+        playTimer?.invalidate()
         recordTimer?.invalidate()
         
         if (recorder != nil && recorder!.isRecording) {
-            recorder = nil
+            recorder!.pause()
         }
+        recorder = nil
+        
         if (player != nil && player!.isPlaying) {
             player!.stop()
         }
@@ -163,18 +158,18 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         loadingIndicator?.hide(animated: true)
         updateProgressWithTag(0)
         eraseButton.isHidden = true
-        if (continueRecord) {
+        if (isContinueRecord) {
             deleteFileWithName(KUpdate, type: "")
             setUpRecorderWithName(KUpdate)
-            ticks = Int(lengthForUrl(masterURL!))
-            recordTime.text = timeForTicks(ticks)
+            ticks = Double(lengthForUrl(masterURL!))
+            recordTime.text = Util.timeForTicks(ticks)
         }
         else {
             deleteFileWithName(KMaster, type: "")
             setUpRecorderWithName(KMaster)
             masterURL = recorder!.url
             ticks = 0
-            recordTime.text = timeForTicks(ticks)
+            recordTime.text = Util.timeForTicks(ticks)
         }
         
         navigationItem.leftBarButtonItem = nil
@@ -229,10 +224,10 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         }
     }
     
-    func setUpRecorderWithName(_ name: String) {
+    func setUpRecorderWithName(_  fileName: String) {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let documentsDirectory = paths[0]
-        let soundOneNew = (documentsDirectory as NSString).appendingPathComponent(name)
+        let soundOneNew = (documentsDirectory as NSString).appendingPathComponent(fileName)
         let outputFileUrl = URL(fileURLWithPath: soundOneNew)
         
         //  Setup Audio Session
@@ -254,52 +249,19 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         
         do {
             recorder = try AVAudioRecorder(url: outputFileUrl, settings: recordSetting)
+            recorder!.delegate = self
+            recorder!.isMeteringEnabled = true
+            recorder!.prepareToRecord()
         }
         catch {
             print(error)
             return
         }
-        
-        recorder!.delegate = self
-        recorder!.isMeteringEnabled = true
-        recorder!.prepareToRecord()
-    }
-    
-    func timeForTicks(_ ticks: Int) -> String {
-        let seconds = ticks % 60
-        let minutes = ticks / 60
-        
-        var secondsStr = String(seconds)
-        if (seconds < 10) {
-            secondsStr = "0" + secondsStr
-        }
-        
-        var minutesStr = String(minutes)
-        if (minutes < 10) {
-            minutesStr = "0" + minutesStr
-        }
-        
-        return minutesStr + ":" + secondsStr
-    }
-    
-    func startSlider() {
-        seekBar.minimumValue = 0
-        seekBar.maximumValue = Float(player!.duration)
-        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(RecordViewController.playerTimer), userInfo: nil, repeats: true)
-        let runLoop = RunLoop.current
-        runLoop.add(timer!, forMode: .defaultRunLoopMode)
     }
     
     func playerTimer() {
-        if (player!.isPlaying) {
-            seekBar.value = Float(player!.currentTime)
-            playTime.text = timeForTicks(Int(player!.currentTime)) + "/" + timeForTicks(Int(lengthForUrl(masterURL!)))
-        }
-        else {
-            setSliderAndLabel()
-            timer?.invalidate()
-            playButton.setBackgroundImage(UIImage(named: "PlayIcon"), for: .normal)
-        }
+        seekBar.value = Float(player!.currentTime)
+        playTime.text = Util.timeForTicks(player!.currentTime) + "/" + Util.timeForTicks(Double(lengthForUrl(masterURL!)))
     }
     
     //////////////////////////////
@@ -308,7 +270,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         if (recorder!.isRecording) {
             recorder!.stop()
             recordButton.isEnabled = false
-            timer!.invalidate()
+            meterTimer!.invalidate()
             recordTimer!.invalidate()
             updateProgressWithTag(0)
         }
@@ -317,13 +279,13 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             recordButton.setTitle("Pause", for: .normal)
             recordingText.isHidden = false
             progressView.isHidden = false
-            timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(RecordViewController.setSoundMeter), userInfo: nil, repeats: true)
+            meterTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(RecordViewController.setSoundMeter), userInfo: nil, repeats: true)
             recordTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(RecordViewController.updateRecordingDuration), userInfo: nil, repeats: true)
         }
     }
     
     func setSoundMeter() {
-        recorder?.updateMeters()
+        recorder!.updateMeters()
         let lowPassResults = pow(10, (0.05 * recorder!.peakPower(forChannel: 0)))
         var tag = 1
         for i in 1...15 {
@@ -338,44 +300,41 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     
     func updateRecordingDuration() {
         ticks = ticks + 1
-        recordTime.text = timeForTicks(ticks)
+        recordTime.text = Util.timeForTicks(ticks)
     }
     
     @IBAction func onPlay(_ sender: AnyObject) {
-        if (player != nil) {
-            if (player!.isPlaying) {
-                player!.pause()
-                timer!.invalidate()
-                playButton.setBackgroundImage(UIImage(named: "PlayIcon"), for: .normal)
-            }
-            else {
-                player!.play()
-                startSlider()
-                playButton.setBackgroundImage(UIImage(named: "PauseIcon"), for: .normal)
-            }
+        if (player!.isPlaying) {
+            player!.pause()
+            playTimer!.invalidate()
+            playButton.setBackgroundImage(UIImage(named: "PlayIcon"), for: .normal)
         }
         else {
-            timer!.invalidate()
-            recordTimer!.invalidate()
-            do {
-                player = try AVAudioPlayer(contentsOf: masterURL!)
-            }
-            catch {
-                print(error)
-            }
-            player!.delegate = self
             player!.play()
-            startSlider()
+            playTimer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(RecordViewController.playerTimer), userInfo: nil, repeats: true)
             playButton.setBackgroundImage(UIImage(named: "PauseIcon"), for: .normal)
+        }
+    }
+    
+    func setupPlayer() {
+        do {
+            player = try AVAudioPlayer(contentsOf: masterURL!)
+            player!.delegate = self
+            seekBar.maximumValue = Float(player!.duration)
+            ticks = Double(lengthForUrl(masterURL!))
+        }
+        catch {
+            print(error)
         }
     }
     
     @IBAction func continueRecord(_ sender: AnyObject) {
         if (player != nil) {
             player!.stop()
+            player = nil
         }
-        timer!.invalidate()
-        continueRecord = true
+        playTimer?.invalidate()
+        isContinueRecord = true
         getReadyForRecord()
         playButton.setBackgroundImage(UIImage(named: "PlayIcon"), for: .normal)
         onRecord(recordButton)
@@ -396,7 +355,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         if (player != nil && player!.isPlaying) {
             player!.stop()
         }
-        continueRecord = false
+        isContinueRecord = false
         deleteFileWithName(KMaster, type: "")
         deleteFileWithName(KUpdate, type: "")
         deleteFileWithName(Kcombined, type: "")
@@ -409,7 +368,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     @IBAction func onPlayBack(_ sender: AnyObject) {
         player!.currentTime = player!.currentTime - 5
         seekBar.value = Float(player!.currentTime)
-        playTime.text = timeForTicks(Int(player!.currentTime)) + "/" + timeForTicks(Int(lengthForUrl(masterURL!)))
+        playTime.text = Util.timeForTicks(player!.currentTime) + "/" + Util.timeForTicks(Double(lengthForUrl(masterURL!)))
     }
     
     @IBAction func onSubmit(_ sender: AnyObject) {
@@ -417,7 +376,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             Util.showAlertMessage(title: "Eword", message: "File is already submitted.", parent: self)
         }
         else {
-            timer?.invalidate()
+            playTimer?.invalidate()
             let path = DirectoryManager.instance.getPathForFileWithType(type: KFolder, name: name!)
             let url = URL(fileURLWithPath: path)
             
@@ -467,7 +426,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     
     @IBAction func slider(_ sender: AnyObject) {
         player!.currentTime = TimeInterval(seekBar.value)
-        playTime.text = timeForTicks(Int(seekBar.value)) + "/" + timeForTicks(ticks)
+        playTime.text = Util.timeForTicks(Double(seekBar.value)) + "/" + Util.timeForTicks(ticks)
     }
     
     //////////////////////////////
@@ -516,19 +475,17 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         navigationItem.leftBarButtonItem = leftButton
         navigationItem.rightBarButtonItem = rightButton
         loadingIndicator?.hide(animated: true)
-        player = nil
         setSliderAndLabel()
     }
     
     func setSliderAndLabel() {
         seekBar.value = 0
-        playTime.text = "00:00/" + timeForTicks(Int(lengthForUrl(masterURL!)))
+        playTime.text = "00:00/" + Util.timeForTicks(Double(lengthForUrl(masterURL!)))
     }
     
     //////////////////////////////
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        timer!.invalidate()
         recordingText.isHidden = true
         progressView.isHidden = true
         print(recorder.url)
@@ -538,17 +495,18 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             _ = combineFilesFor(recorder.url)
         }
         else {
-            pauseRecording()
             getName()
             saveFile()
             saveInCoreDataWithName(name!)
             setBadge()
+            pauseRecording()
+            setupPlayer()
         }
     }
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         setSliderAndLabel()
-        timer!.invalidate()
+        playTimer!.invalidate()
         playButton.setBackgroundImage(UIImage(named: "PlayIcon"), for: .normal)
     }
     
@@ -565,7 +523,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             let soundOneNew = (documentsDirectory as NSString).appendingPathComponent(Kcombined)
             let out_url = URL(fileURLWithPath: soundOneNew)
             let existingAudioDurationSeconds = self.lengthForUrl(self.masterURL!)
-            let newAudioDurationSeconds = self.lengthForUrl(self.masterURL!)
+            let newAudioDurationSeconds = self.lengthForUrl(url)
             _ = existingAudioDurationSeconds + newAudioDurationSeconds
             let sourceUrls = [self.masterURL!, url]
             
@@ -603,6 +561,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
                     outStatus = ExtAudioFileSetProperty(afOut!, kExtAudioFileProperty_ClientDataFormat, UInt32(MemoryLayout<AudioStreamBasicDescription>.size), &converterFileFormat)
                     print(outStatus)
                 }
+                
                 buffer = malloc(4096)
                 
                 var conversionBuffer = AudioBufferList()
@@ -611,7 +570,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
                 conversionBuffer.mBuffers.mData = buffer
                 conversionBuffer.mBuffers.mDataByteSize = 4096
                 
-                while(true) {
+                while (true) {
                     conversionBuffer.mBuffers.mDataByteSize = 4096
                     var frameCount: UInt32 = UInt32(INT_MAX)
                     
@@ -642,15 +601,18 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
                 ExtAudioFileDispose(afIn!)
             }
             ExtAudioFileDispose(afOut!)
+            
+            let time = self.lengthForUrl(URL(fileURLWithPath: soundOneNew))
+            print(time)
             self.deleteFileWithName(KUpdate, type: "")
             self.deleteFileWithName(KMaster, type: "")
-            self.player = nil
-            self.replaceFileAtPath(KMaster, data:Data())
+            self.replaceFileAtPath(KMaster, data:NSData(contentsOfFile: soundOneNew))
             self.deleteFileWithName(Kcombined, type: "")
             
             DispatchQueue.main.async {
                 self.loadingIndicator?.hide(animated: true)
                 self.pauseRecording()
+                self.setupPlayer()
                 self.recordButton.isEnabled = true
             }
         }
@@ -722,10 +684,10 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         DirectoryManager.instance.deleteFileAtPath(folderName: type, fileName: name)
     }
     
-    func replaceFileAtPath(_ path: String, data: Data) {
+    func replaceFileAtPath(_ path: String, data: NSData?) {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first
         let filePath = (documentsPath! as NSString).appendingPathComponent(path)
-        (data as NSData).write(toFile: filePath, atomically: true)
+        data!.write(toFile: filePath, atomically: true)
         saveFile()
         saveInCoreDataWithName(name!)
     }

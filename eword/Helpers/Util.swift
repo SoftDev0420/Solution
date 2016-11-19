@@ -15,4 +15,23 @@ class Util {
         alert.addAction(okAction)
         parent.present(alert, animated: true, completion: nil)
     }
+    
+    class func timeForTicks(_ doubleTicks: Double) -> String {
+        let intTicks = Int(floor(doubleTicks))
+        
+        let seconds = intTicks % 60
+        let minutes = intTicks / 60
+        
+        var secondsStr = String(seconds)
+        if (seconds < 10) {
+            secondsStr = "0" + secondsStr
+        }
+        
+        var minutesStr = String(minutes)
+        if (minutes < 10) {
+            minutesStr = "0" + minutesStr
+        }
+        
+        return minutesStr + ":" + secondsStr
+    }
 }
