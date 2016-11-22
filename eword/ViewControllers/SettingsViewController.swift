@@ -171,8 +171,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
                         loadingIndicator!.mode = MBProgressHUDMode.indeterminate
                         loadingIndicator!.label.text = "Loading..."
                         
-//                        var displayOut = userName.text! + " " + password.text! + "\n"
-                        
                         let ws = EwordWebService()
                         ws!.baseUrl = "https://client.ewordsolutions.com"
                         ws!.httpTimeout = 3000
@@ -302,8 +300,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
                                                                             }
                                                                             self.isRush = false
                                                                             self.isEFile = false
-                                                                            self.rushText.text = "No"
-                                                                            self.eFileText.text = "No"
+                                                                            self.rushText.text = " No"
+                                                                            self.eFileText.text = " No"
                                                                             self.saveInCoreData()
                                                                         }
                                                                     }
@@ -397,7 +395,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     
     func updateIfEditWith(context: NSManagedObjectContext) -> Record? {
         let name = urlSelectedFile!.lastPathComponent
-        let feedFetch = NSFetchRequest<Record>.init()
+        let feedFetch = NSFetchRequest<Record>.init(entityName: "Record")
         let predicate = NSPredicate.init(format: "fileName = %@" , name)
         feedFetch.predicate = predicate
         do {

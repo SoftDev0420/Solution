@@ -96,6 +96,7 @@ class EditViewController: UIViewController, MFMailComposeViewControllerDelegate 
             let url = URL(fileURLWithPath: path)
             settingsViewController.urlSelectedFile = url
             tabBarController!.selectedIndex = 2
+            navigationController!.popViewController(animated: false)
         }
         else {
             Util.showAlertMessage(title: "Eword", message: "File is already submitted.", parent: self)

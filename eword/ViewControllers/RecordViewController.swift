@@ -372,7 +372,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     }
     
     @IBAction func onSubmit(_ sender: AnyObject) {
-        if (recording!.submitted!.intValue == 1) {
+        if (recording != nil && recording!.submitted!.intValue == 1) {
             Util.showAlertMessage(title: "Eword", message: "File is already submitted.", parent: self)
         }
         else {
