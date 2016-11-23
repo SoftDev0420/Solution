@@ -23,9 +23,9 @@ class DirectoryManager {
     
     func doesFileExistAtPath(folderName: String, fileName: String) -> Bool {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let path = (paths[0] as NSString).appendingPathComponent(folderName)
+        var path = (paths[0] as NSString).appendingPathComponent(folderName)
         _ = addSkipBackupAttributeToItemAtURL(url: URL.init(fileURLWithPath: path))
-        (path as NSString).appendingPathComponent(fileName)
+        path = (path as NSString).appendingPathComponent(fileName)
         if (FileManager.default.fileExists(atPath: path)) {
             return true
         }
@@ -36,14 +36,13 @@ class DirectoryManager {
     
     func deleteFileAtPath(folderName: String, fileName: String) {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let documentsDirectory = paths[0] as NSString
-        let path = documentsDirectory
+        var path = paths[0]
         if (folderName.characters.count > 0) {
-            path.appendingPathComponent(folderName)
+            path = (path as NSString).appendingPathComponent(folderName)
         }
-        path.appendingPathComponent(fileName)
+        path = (path as NSString).appendingPathComponent(fileName)
         
-        if (!FileManager.default.fileExists(atPath: path as String)) {
+        if (FileManager.default.fileExists(atPath: path as String)) {
             do {
                 try FileManager.default.removeItem(atPath: path as String)
             }
@@ -56,7 +55,7 @@ class DirectoryManager {
     func deleteFolderAtPath(folderName: String) {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let path = (paths[0] as NSString).appendingPathComponent(folderName)
-        if (!FileManager.default.fileExists(atPath: path)) {
+        if (FileManager.default.fileExists(atPath: path)) {
             do {
                 try FileManager.default.removeItem(atPath: path)
             }
@@ -101,8 +100,8 @@ class DirectoryManager {
     
     func loadFileFromDirectoryForType(folderName: String, name: String) -> NSData? {
         let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let path = (paths[0] as NSString).appendingPathComponent(folderName)
-        (path as NSString).appendingPathComponent(name)
+        var path = (paths[0] as NSString).appendingPathComponent(folderName)
+        path = (path as NSString).appendingPathComponent(name)
         if (FileManager.default.fileExists(atPath: path)) {
             return NSData.init(contentsOfFile: path)
         }

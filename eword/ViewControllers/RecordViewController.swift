@@ -516,103 +516,64 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         loadingIndicator!.mode = .text
         loadingIndicator!.label.text = "Loading..."
         
-        DispatchQueue.global(qos: .default).async {
-            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-            let documentsDirectory = paths[0]
-            let soundOneNew = (documentsDirectory as NSString).appendingPathComponent(Kcombined)
-            let out_url = URL(fileURLWithPath: soundOneNew)
-            let existingAudioDurationSeconds = self.lengthForUrl(self.masterURL!)
-            let newAudioDurationSeconds = self.lengthForUrl(url)
-            _ = existingAudioDurationSeconds + newAudioDurationSeconds
-            let sourceUrls = [self.masterURL!, url]
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let documentsDirectory = paths[0]
+        let soundOneNew = (documentsDirectory as NSString).appendingPathComponent(Kcombined)
+        let out_url = URL(fileURLWithPath: soundOneNew)
+        
+        if FileManager.default.fileExists(atPath: soundOneNew) {
+            print("error")
+        }
+        
+        print("Output URL: \(out_url)")
+        print("Original URL: \(masterURL!)")
+        print("Original URL: \(url)")
+        let existingAudioDurationSeconds = self.lengthForUrl(self.masterURL!)
+        let newAudioDurationSeconds = self.lengthForUrl(url)
+        _ = existingAudioDurationSeconds + newAudioDurationSeconds
+        let sourceUrls = [masterURL!, url]
+        
+        var nextClipStartTime = kCMTimeZero
+        let composition = AVMutableComposition()
+        let compositionAudioTrack = composition.addMutableTrack(withMediaType: AVMediaTypeAudio, preferredTrackID: kCMPersistentTrackID_Invalid)
+
+        for url in sourceUrls {
             
-            var afIn: ExtAudioFileRef? = nil
-            var afOut: ExtAudioFileRef? = nil
-            var inputFileFormat = AudioStreamBasicDescription()
-            var outputFileFormat = AudioStreamBasicDescription()
-            var converterFileFormat = AudioStreamBasicDescription()
-            var propertySize = UInt32(MemoryLayout<AudioStreamBasicDescription>.size)
-            var buffer: UnsafeMutableRawPointer
-            
-            for inUrl in sourceUrls {
-                var status = ExtAudioFileOpenURL(inUrl as CFURL, &afIn)
-                print(afIn!)
+            let avAsset = AVURLAsset(url: url, options: nil)
+            let tracks = avAsset.tracks(withMediaType: AVMediaTypeAudio)
+            if (tracks.count == 0) {
                 
-                bzero(&inputFileFormat, MemoryLayout<AudioStreamBasicDescription>.size)
-                status = ExtAudioFileGetProperty(afIn!, kExtAudioFileProperty_FileDataFormat, &propertySize, &inputFileFormat)
-                
-                memset(&converterFileFormat, 0, MemoryLayout<AudioStreamBasicDescription>.size);
-                converterFileFormat.mFormatID = kAudioFormatLinearPCM
-                converterFileFormat.mSampleRate = inputFileFormat.mSampleRate
-                converterFileFormat.mChannelsPerFrame = 1
-                converterFileFormat.mBytesPerPacket = 2
-                converterFileFormat.mFramesPerPacket = 1
-                converterFileFormat.mBytesPerFrame = 2
-                converterFileFormat.mBitsPerChannel = 16
-                converterFileFormat.mFormatFlags = kAudioFormatFlagsNativeEndian | kAudioFormatFlagIsPacked | kAudioFormatFlagIsSignedInteger
-                
-                status = ExtAudioFileSetProperty(afIn!, kExtAudioFileProperty_ClientDataFormat, UInt32(MemoryLayout<AudioStreamBasicDescription>.size), &converterFileFormat)
-                if (status != 0) {
-                    
-                }
-                
-                if (afOut == nil) {
-                    memset(&outputFileFormat, 0, MemoryLayout<AudioStreamBasicDescription>.size);
-                    outputFileFormat.mFormatID = kAudioFormatMPEG4AAC
-                    outputFileFormat.mFormatFlags = AudioFormatFlags(MPEG4ObjectID.aac_Main.rawValue)
-                    outputFileFormat.mSampleRate = inputFileFormat.mSampleRate
-                    outputFileFormat.mChannelsPerFrame = inputFileFormat.mChannelsPerFrame
-                    var outStatus = ExtAudioFileCreateWithURL(out_url as CFURL, kAudioFileM4AType, &outputFileFormat, nil, AudioFileFlags.eraseFile.rawValue, &afOut)
-                    outStatus = ExtAudioFileSetProperty(afOut!, kExtAudioFileProperty_ClientDataFormat, UInt32(MemoryLayout<AudioStreamBasicDescription>.size), &converterFileFormat)
-                    print(outStatus)
-                }
-                
-                buffer = malloc(4096)
-                
-                var conversionBuffer = AudioBufferList()
-                conversionBuffer.mNumberBuffers = 1
-                conversionBuffer.mBuffers.mNumberChannels = inputFileFormat.mChannelsPerFrame
-                conversionBuffer.mBuffers.mData = buffer
-                conversionBuffer.mBuffers.mDataByteSize = 4096
-                
-                while (true) {
-                    conversionBuffer.mBuffers.mDataByteSize = 4096
-                    var frameCount: UInt32 = UInt32(INT_MAX)
-                    
-                    if (inputFileFormat.mBytesPerFrame > 0) {
-                        frameCount = conversionBuffer.mBuffers.mDataByteSize / inputFileFormat.mBytesPerFrame
-                    }
-                    
-                    var err = ExtAudioFileRead(afIn!, &frameCount, &conversionBuffer)
-                    if (err > 0) {
-                        
-                    }
-                    else {
-                        
-                    }
-                    
-                    if (frameCount == 0) {
-                        break
-                    }
-                    
-                    err = ExtAudioFileWrite(afOut!, frameCount, &conversionBuffer)
-                    if (err > 0) {
-                        
-                    }
-                    else {
-                        
-                    }
-                }
-                ExtAudioFileDispose(afIn!)
             }
-            ExtAudioFileDispose(afOut!)
-            
-            let time = self.lengthForUrl(URL(fileURLWithPath: soundOneNew))
-            print(time)
-            self.deleteFileWithName(KUpdate, type: "")
-            self.deleteFileWithName(KMaster, type: "")
-            self.replaceFileAtPath(KMaster, data:NSData(contentsOfFile: soundOneNew))
-            self.deleteFileWithName(Kcombined, type: "")
+            let timeRangeInAsset = CMTimeRangeMake(kCMTimeZero, avAsset.duration)
+            let clipAudioTrack = avAsset.tracks(withMediaType: AVMediaTypeAudio)[0]
+            do {
+                _ = try compositionAudioTrack.insertTimeRange(timeRangeInAsset, of: clipAudioTrack, at: nextClipStartTime)
+            }
+            catch {
+                print(error)
+            }
+            nextClipStartTime = CMTimeAdd(nextClipStartTime, timeRangeInAsset.duration)
+        }
+        
+        let exportSession = AVAssetExportSession(asset: composition, presetName: AVAssetExportPresetAppleM4A)
+        if (exportSession == nil) {
+            return false
+        }
+        
+        exportSession!.outputURL = out_url
+        exportSession!.outputFileType = AVFileTypeAppleM4A
+        exportSession!.exportAsynchronously(completionHandler: {
+            if (exportSession!.status == AVAssetExportSessionStatus.completed) {
+                let time = self.lengthForUrl(URL(fileURLWithPath: soundOneNew))
+                print(time)
+                self.deleteFileWithName(KUpdate, type: "")
+                self.deleteFileWithName(KMaster, type: "")
+                self.replaceFileAtPath(KMaster, data:NSData(contentsOfFile: soundOneNew))
+                self.deleteFileWithName(Kcombined, type: "")
+            }
+            else if (exportSession!.status == AVAssetExportSessionStatus.failed) {
+                
+            }
             
             DispatchQueue.main.async {
                 self.loadingIndicator?.hide(animated: true)
@@ -620,7 +581,113 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
                 self.setupPlayer()
                 self.recordButton.isEnabled = true
             }
-        }
+        })
+        
+//        DispatchQueue.global(qos: .default).async {
+//            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+//            let documentsDirectory = paths[0]
+//            let soundOneNew = (documentsDirectory as NSString).appendingPathComponent(Kcombined)
+//            let out_url = URL(fileURLWithPath: soundOneNew)
+//            let existingAudioDurationSeconds = self.lengthForUrl(self.masterURL!)
+//            let newAudioDurationSeconds = self.lengthForUrl(url)
+//            _ = existingAudioDurationSeconds + newAudioDurationSeconds
+//            let sourceUrls = [self.masterURL!, url]
+//            
+//            var afIn: ExtAudioFileRef? = nil
+//            var afOut: ExtAudioFileRef? = nil
+//            var inputFileFormat = AudioStreamBasicDescription()
+//            var outputFileFormat = AudioStreamBasicDescription()
+//            var converterFileFormat = AudioStreamBasicDescription()
+//            var propertySize = UInt32(MemoryLayout<AudioStreamBasicDescription>.size)
+//            var buffer: UnsafeMutableRawPointer
+//            
+//            for inUrl in sourceUrls {
+//                var status = ExtAudioFileOpenURL(inUrl as CFURL, &afIn)
+//                print(afIn!)
+//                
+//                bzero(&inputFileFormat, MemoryLayout<AudioStreamBasicDescription>.size)
+//                status = ExtAudioFileGetProperty(afIn!, kExtAudioFileProperty_FileDataFormat, &propertySize, &inputFileFormat)
+//                
+//                memset(&converterFileFormat, 0, MemoryLayout<AudioStreamBasicDescription>.size);
+//                converterFileFormat.mFormatID = kAudioFormatLinearPCM
+//                converterFileFormat.mSampleRate = inputFileFormat.mSampleRate
+//                converterFileFormat.mChannelsPerFrame = 1
+//                converterFileFormat.mBytesPerPacket = 2
+//                converterFileFormat.mFramesPerPacket = 1
+//                converterFileFormat.mBytesPerFrame = 2
+//                converterFileFormat.mBitsPerChannel = 16
+//                converterFileFormat.mFormatFlags = kAudioFormatFlagsNativeEndian | kAudioFormatFlagIsPacked | kAudioFormatFlagIsSignedInteger
+//                
+//                status = ExtAudioFileSetProperty(afIn!, kExtAudioFileProperty_ClientDataFormat, UInt32(MemoryLayout<AudioStreamBasicDescription>.size), &converterFileFormat)
+//                if (status != 0) {
+//                    
+//                }
+//                
+//                if (afOut == nil) {
+//                    memset(&outputFileFormat, 0, MemoryLayout<AudioStreamBasicDescription>.size);
+//                    outputFileFormat.mFormatID = kAudioFormatMPEG4AAC
+//                    outputFileFormat.mFormatFlags = AudioFormatFlags(MPEG4ObjectID.aac_Main.rawValue)
+//                    outputFileFormat.mSampleRate = inputFileFormat.mSampleRate
+//                    outputFileFormat.mChannelsPerFrame = inputFileFormat.mChannelsPerFrame
+//                    var outStatus = ExtAudioFileCreateWithURL(out_url as CFURL, kAudioFileM4AType, &outputFileFormat, nil, AudioFileFlags.eraseFile.rawValue, &afOut)
+//                    outStatus = ExtAudioFileSetProperty(afOut!, kExtAudioFileProperty_ClientDataFormat, UInt32(MemoryLayout<AudioStreamBasicDescription>.size), &converterFileFormat)
+//                    print(outStatus)
+//                }
+//                
+//                buffer = malloc(4096)
+//                
+//                var conversionBuffer = AudioBufferList()
+//                conversionBuffer.mNumberBuffers = 1
+//                conversionBuffer.mBuffers.mNumberChannels = inputFileFormat.mChannelsPerFrame
+//                conversionBuffer.mBuffers.mData = buffer
+//                conversionBuffer.mBuffers.mDataByteSize = 4096
+//                
+//                while (true) {
+//                    conversionBuffer.mBuffers.mDataByteSize = 4096
+//                    var frameCount: UInt32 = UInt32(INT_MAX)
+//                    
+//                    if (inputFileFormat.mBytesPerFrame > 0) {
+//                        frameCount = conversionBuffer.mBuffers.mDataByteSize / inputFileFormat.mBytesPerFrame
+//                    }
+//                    
+//                    var err = ExtAudioFileRead(afIn!, &frameCount, &conversionBuffer)
+//                    if (err > 0) {
+//                        
+//                    }
+//                    else {
+//                        
+//                    }
+//                    
+//                    if (frameCount == 0) {
+//                        break
+//                    }
+//                    
+//                    err = ExtAudioFileWrite(afOut!, frameCount, &conversionBuffer)
+//                    if (err > 0) {
+//                        
+//                    }
+//                    else {
+//                        
+//                    }
+//                }
+//                ExtAudioFileDispose(afIn!)
+//            }
+//            ExtAudioFileDispose(afOut!)
+//            
+//            let time = self.lengthForUrl(URL(fileURLWithPath: soundOneNew))
+//            print(time)
+//            self.deleteFileWithName(KUpdate, type: "")
+//            self.deleteFileWithName(KMaster, type: "")
+//            self.replaceFileAtPath(KMaster, data:NSData(contentsOfFile: soundOneNew))
+//            self.deleteFileWithName(Kcombined, type: "")
+//            
+//            DispatchQueue.main.async {
+//                self.loadingIndicator?.hide(animated: true)
+//                self.pauseRecording()
+//                self.setupPlayer()
+//                self.recordButton.isEnabled = true
+//            }
+//        }
         
         return true
     }
