@@ -104,10 +104,17 @@ class EditViewController: UIViewController, MFMailComposeViewControllerDelegate 
     }
 
     @IBAction func onDelete(_ sender: Any) {
-        DirectoryManager.instance.deleteFileAtPath(folderName: KFolder, fileName: record!.fileName!)
-        deleteFromCoreDataWithName(name: record!.fileName!)
-        setBadge()
-        navigationController!.popViewController(animated: true)
+        let alert = UIAlertController(title: "Eword", message: "Want to delete this file?", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            DirectoryManager.instance.deleteFileAtPath(folderName: KFolder, fileName: self.record!.fileName!)
+            self.deleteFromCoreDataWithName(name: self.record!.fileName!)
+            self.setBadge()
+            self.navigationController!.popViewController(animated: true)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
     }
     
     ////////////////////////////////

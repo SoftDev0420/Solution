@@ -52,7 +52,6 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     var fileType, name: String?
     var recording: Record?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -537,7 +536,12 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             
             for inUrl in sourceUrls {
                 var status = ExtAudioFileOpenURL(inUrl as CFURL, &afIn)
+                print(afIn!)
+                
+                bzero(&inputFileFormat, MemoryLayout<AudioStreamBasicDescription>.size)
                 status = ExtAudioFileGetProperty(afIn!, kExtAudioFileProperty_FileDataFormat, &propertySize, &inputFileFormat)
+                
+                memset(&converterFileFormat, 0, MemoryLayout<AudioStreamBasicDescription>.size);
                 converterFileFormat.mFormatID = kAudioFormatLinearPCM
                 converterFileFormat.mSampleRate = inputFileFormat.mSampleRate
                 converterFileFormat.mChannelsPerFrame = 1
@@ -553,6 +557,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
                 }
                 
                 if (afOut == nil) {
+                    memset(&outputFileFormat, 0, MemoryLayout<AudioStreamBasicDescription>.size);
                     outputFileFormat.mFormatID = kAudioFormatMPEG4AAC
                     outputFileFormat.mFormatFlags = AudioFormatFlags(MPEG4ObjectID.aac_Main.rawValue)
                     outputFileFormat.mSampleRate = inputFileFormat.mSampleRate

@@ -29,6 +29,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     var urlSelectedFile: URL?
     var isRush: Bool = false, isEFile: Bool = false
     var alreadySubmitted = false
+    var showedAccountAlert = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,8 +48,20 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
         let singleTapGesture = UITapGestureRecognizer.init(target: self, action: #selector(SettingsViewController.onCloseKeyboard))
         singleTapGesture.numberOfTapsRequired = 1
         self.view.addGestureRecognizer(singleTapGesture)
+        
+        if (!showedAccountAlert) {
+            showedAccountAlert = true
+            Util.showAlertMessage(title: "Eword", message: "In order to use this device with ewordsolutions.com you must first have an account by either calling 866-386-6003 or going to www.ewordsolutions.com and sign up through the website. \n Thanks.", parent: self)
+        }
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        urlSelectedFile = nil
+        alreadySubmitted = false
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -179,6 +192,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
                                 let rs = try ws!.userAuth(self.userName.text, userPass: self.password.text, appId: DataClass.instance.AppId)
                                 if (rs.authToken != "-9999" || rs.message != "Login FAILED") {
                                     DispatchQueue.main.async {
+                                        self.loadingIndicator!.mode = MBProgressHUDMode.determinateHorizontalBar
                                         self.loadingIndicator!.label.text = "Uploading File..."
                                         self.loadingIndicator!.progress = 0
                                         DispatchQueue.global(qos: .default).async {
@@ -377,7 +391,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate {
     }
     
     func saveInCoreData() {
-        alreadySubmitted = false
+        alreadySubmitted = true
         let context = (UIApplication.shared.delegate as! AppDelegate).getManagedObjectContext()
         let record = updateIfEditWith(context: context!)
         if (record != nil) {
