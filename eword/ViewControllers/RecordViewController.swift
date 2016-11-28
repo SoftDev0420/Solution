@@ -479,7 +479,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
     
     func setSliderAndLabel() {
         seekBar.value = 0
-        playTime.text = "00:00/" + Util.timeForTicks(Double(lengthForUrl(masterURL!)))
+        playTime.text = "00:00:00/" + Util.timeForTicks(Double(lengthForUrl(masterURL!)))
     }
     
     //////////////////////////////

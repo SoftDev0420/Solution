@@ -678,8 +678,8 @@
                                             <constraint firstAttribute="height" constant="100" id="ovB-w9-U5a"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzV-Sc-8Mm">
-                                        <rect key="frame" x="153" y="111" width="69" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hzV-Sc-8Mm">
+                                        <rect key="frame" x="134.5" y="111" width="106.5" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -698,8 +698,8 @@
                                             <action selector="slider:" destination="TAe-Nj-ule" eventType="valueChanged" id="Ygg-1w-NCh"/>
                                         </connections>
                                     </slider>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00/00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyf-Pk-Xew">
-                                        <rect key="frame" x="115" y="216" width="145.5" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00/00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyf-Pk-Xew">
+                                        <rect key="frame" x="77.5" y="216" width="221" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -773,7 +773,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zH3-hT-HM8">
-                                        <rect key="frame" x="61" y="415.5" width="253" height="39"/>
+                                        <rect key="frame" x="60.5" y="415.5" width="254.5" height="39"/>
                                         <subviews>
                                             <view tag="11" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0jv-p0-dvv">
                                                 <rect key="frame" x="0.0" y="0.0" width="11.5" height="39"/>
@@ -832,7 +832,7 @@
                                                 <color key="backgroundColor" red="1" green="0.62282270610000001" blue="0.037940050340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                             <view tag="25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QYu-ak-uch">
-                                                <rect key="frame" x="185.5" y="0.0" width="67.5" height="39"/>
+                                                <rect key="frame" x="185.5" y="0.0" width="69" height="39"/>
                                                 <color key="backgroundColor" red="1" green="0.17586349179999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </view>
                                         </subviews>

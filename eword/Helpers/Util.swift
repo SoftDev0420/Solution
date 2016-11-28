@@ -20,7 +20,8 @@ class Util {
         let intTicks = Int(floor(doubleTicks))
         
         let seconds = intTicks % 60
-        let minutes = intTicks / 60
+        let minutes = (intTicks / 60) % 60
+        let hours = intTicks / 3600
         
         var secondsStr = String(seconds)
         if (seconds < 10) {
@@ -32,6 +33,11 @@ class Util {
             minutesStr = "0" + minutesStr
         }
         
-        return minutesStr + ":" + secondsStr
+        var hoursStr = String(hours)
+        if (hours < 10) {
+            hoursStr = "0" + hoursStr
+        }
+        
+        return hoursStr + ":" + minutesStr + ":" + secondsStr
     }
 }
