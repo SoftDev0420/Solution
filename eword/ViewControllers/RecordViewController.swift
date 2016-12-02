@@ -94,6 +94,9 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             name = recording!.fileName!
             playButton.setBackgroundImage(UIImage(named: "PlayIcon"), for: .normal)
         }
+        else {
+            recording = nil
+        }
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -716,15 +719,15 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         }
     }
     
-    func saveInCoreDataWithName(_ name: String) {
-        let length = Int(lengthForUrl(masterURL!))
+    func saveInCoreDataWithName(_ fileName: String) {
+        let length = Float(lengthForUrl(masterURL!))
         let rec = updateIfEditWith(managedObjectContext!)
         if (rec != nil) {
             rec!.setValue(fileType, forKey: "type")
             rec!.setValue(Date(), forKey: "date")
             rec!.setValue(0, forKey: "submitted")
             rec!.setValue(length, forKey: "length")
-            rec!.setValue(name, forKey: "fileName")
+            rec!.setValue(fileName, forKey: "fileName")
         }
         else {
             let recObj = NSEntityDescription.insertNewObject(forEntityName: "Record", into: managedObjectContext!)
@@ -732,7 +735,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
             recObj.setValue(Date(), forKey: "date")
             recObj.setValue(0, forKey: "submitted")
             recObj.setValue(length, forKey: "length")
-            recObj.setValue(name, forKey: "fileName")
+            recObj.setValue(fileName, forKey: "fileName")
         }
         do {
             try managedObjectContext!.save()

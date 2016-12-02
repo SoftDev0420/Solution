@@ -142,17 +142,21 @@ class DirectoryManager {
         let fileManager = FileManager.default
         if (fileManager.fileExists(atPath: filePathSrc)) {
             do {
-                try fileManager.removeItem(atPath: filePathSrc)
-                do {
-                    try fileManager.moveItem(atPath: filePathSrc, toPath: filePathDst)
-                }
-                catch {
-                    print("renameFileWithName error")
-                }
+                try fileManager.removeItem(atPath: filePathDst)
             }
             catch {
                 print("renameFileWithName error")
             }
+            
+            do {
+                try fileManager.moveItem(atPath: filePathSrc, toPath: filePathDst)
+            }
+            catch {
+                print("renameFileWithName error")
+            }
+        }
+        else {
+            print("renameFileWithName error")
         }
     }
     
@@ -161,16 +165,16 @@ class DirectoryManager {
         if (fileManager.fileExists(atPath: destination)) {
             do {
                 try fileManager.removeItem(atPath: destination)
-                do {
-                    try fileManager.copyItem(atPath: source, toPath: destination)
-                }
-                catch {
-                    print("copyFrom error")
-                }
             }
             catch {
                 print("copyFrom error")
             }
+        }
+        do {
+            try fileManager.copyItem(atPath: source, toPath: destination)
+        }
+        catch {
+            print("copyFrom error")
         }
     }
 }

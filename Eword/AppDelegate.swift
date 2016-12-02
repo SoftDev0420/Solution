@@ -13,7 +13,7 @@ import CoreData
 let KMaster = "MyAudio.m4a"
 let KUpdate = "New.m4a"
 let Kcombined = "Combined.m4a"
-let KFolder = "Myaudios"
+let KFolder = "MyAudios"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -36,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for:.normal)
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.init(red: 0, green: 0.5, blue: 1.0, alpha: 1.0)], for:.selected)
         
+        application.isIdleTimerDisabled = true
         
         return true
     }
