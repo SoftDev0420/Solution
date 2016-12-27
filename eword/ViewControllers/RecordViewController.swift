@@ -58,10 +58,10 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPl
         
         navigationController!.navigationBar.tintColor = UIColor.white
         
-        leftButton = UIBarButtonItem(title: "Gallery", style: .plain, target: self, action: #selector(onGallery))
-        navigationItem.leftBarButtonItem = leftButton
-        rightButton = UIBarButtonItem(title: "Camera", style: .plain, target: self, action: #selector(onCamera))
-        navigationItem.rightBarButtonItem = rightButton
+//        leftButton = UIBarButtonItem(title: "Gallery", style: .plain, target: self, action: #selector(onGallery))
+//        navigationItem.leftBarButtonItem = leftButton
+//        rightButton = UIBarButtonItem(title: "Camera", style: .plain, target: self, action: #selector(onCamera))
+//        navigationItem.rightBarButtonItem = rightButton
         
         setBadge()
     }

@@ -17,11 +17,15 @@
 	<key>CFBundleShortVersionString</key>
 	<string>0.01</string>
 	<key>CFBundleVersion</key>
-	<string> 6</string>
+	<string>7</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Eword app is going to access your camera. Is it okay?</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Eword app is going to use your microphone. Is it okay?</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Eword app is going to access your photos. Is it okay?</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
